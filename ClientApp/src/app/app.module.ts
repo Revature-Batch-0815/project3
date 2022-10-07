@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+
 import { CreateProductComponent } from './create-product/create-product.component';
 
 import { EditProductComponent } from './edit-product/edit-product.component';
@@ -72,6 +73,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+
 
 
 @NgModule({
@@ -144,8 +146,10 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
       { path: 'pedit', component: EditProductComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+
       { path:'pdetails', component:ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
+
     ]),
     BrowserAnimationsModule
   ],
