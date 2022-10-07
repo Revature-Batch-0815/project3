@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/services/orders.service';
+
 
 @Component({
   selector: 'app-view-orders',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrdersComponent implements OnInit {
 
-  constructor() { }
+  _makeApiCall: OrdersService;
+
+  constructor(_apicallREF: OrdersService) {
+    this._makeApiCall = _apicallREF;
+  }
 
   ngOnInit(): void {
   }

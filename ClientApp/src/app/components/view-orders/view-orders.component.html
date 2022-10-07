@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+  <button (click)="_makeApiCall.getOrderDetails()"> Show Orders  </button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Product ID</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let order of _makeApiCall.orders">
+      <td> {{ order.orderId }} </td>
+      <td> {{ order.productId }} </td>
+    </tr>
+  </table>
+</body>
+</html>
