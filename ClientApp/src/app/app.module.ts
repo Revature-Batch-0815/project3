@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { ViewOrdersComponent } from './Components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
@@ -144,16 +145,7 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'pay', component: PayComponentComponent },
-      { path: 'pdetails', component:ProductDetailsComponent },
-      { path:'pdetails/:id', component:ProductDetailsComponent },
-      { path: 'product', component: ProductListComponent },
-      { path: 'pcreate', component: CreateProductComponent },
-      { path: 'pedit/:id', component: EditProductComponent },
-      { path: 'paySuccess', component: PaySuccessComponent }
-
-    ]),
-    BrowserAnimationsModule
+    ])
   ],
   exports: [
     MatAutocompleteModule,
