@@ -13,7 +13,7 @@ export class OrdersService {
     this._http = _httpREF;
   }
   getOrderDetails() {
-    return this._http.get('https://localhost:7108/api/OrderDetails').subscribe(result => {
+    return this._http.get('https://localhost:7108/api/Orders').subscribe(result => {
       this.orders = result;
       console.log(result);
     });

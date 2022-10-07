@@ -27,6 +27,14 @@ namespace project3.Controllers
             return await _context.Orders.ToListAsync();
         }
 
+        [HttpGet]
+        public ActionResult OrderDetails()
+        {
+            UserOrders order = new UserOrders();
+            var user = User.Identity.Name;
+            return (ActionResult)order.GetUserOrders(user);
+        }
+
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
