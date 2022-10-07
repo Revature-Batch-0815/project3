@@ -59,6 +59,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 
 
@@ -69,7 +70,8 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -117,6 +119,7 @@ import { MatTableModule } from '@angular/material/table';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path:'pdetails', component:ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
     ]),
     BrowserAnimationsModule
