@@ -3,12 +3,13 @@
 
 //}
 
-export const Product = {
-  productId: "",
-  productName: "",
-  productCategory: "",
-  productDescription: "",
-  productImgUrl: "",
-  productPrice: "",
-  productQty: ""
+export class Product  {
+  productId= "";
+  productName= "";
+  productCategory= "";
+  productDescription= "";
+  productImgUrl= "";
+  productPrice= "";
+  productQty= "";
 }
+
