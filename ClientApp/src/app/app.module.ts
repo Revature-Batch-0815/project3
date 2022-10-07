@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -80,10 +81,13 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-<<<<<<
+
+    CreateProductComponent
+
     EditProductComponent
     ProductListComponent,
     ProductDetailsComponent
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
