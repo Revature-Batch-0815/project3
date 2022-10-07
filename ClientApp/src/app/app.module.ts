@@ -18,14 +18,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { CreateProductComponent } from './create-product/create-product.component';
 
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatListModule } from '@angular/material/list';
 
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -84,9 +77,9 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     CounterComponent,
     FetchDataComponent,
 
-    CreateProductComponent
+    CreateProductComponent,
 
-    EditProductComponent
+    EditProductComponent,
     ProductListComponent,
     ProductDetailsComponent
 

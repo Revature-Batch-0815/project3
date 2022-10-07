@@ -1,8 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+#web-header{
+  text-align: center;
+}
+
+.logo{
+  position: absolute;
+  z-index: 1;
+  font-family: 'Roboto', sans-serif;
+}
+
+.carousel-inner > .item > img {
+  width:640px;
+  height:360px;
+}
 
 /* Provide sufficient contrast against white background */
 a {
