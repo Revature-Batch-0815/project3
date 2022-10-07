@@ -14,6 +14,17 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -62,7 +73,6 @@ import { MatTableModule } from '@angular/material/table';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +80,8 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+<<<<<<
+    EditProductComponent
     ProductListComponent,
     ProductDetailsComponent
   ],
@@ -115,8 +127,17 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     HttpClientModule,
     FormsModule,
     ApiAuthorizationModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'pedit', component: EditProductComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path:'pdetails', component:ProductDetailsComponent },
