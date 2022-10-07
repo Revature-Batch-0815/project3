@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 //angular materials
 // Material Form Controls
@@ -88,6 +89,8 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
     ProductDetailsComponent,
     PayComponentComponent,
     ViewOrdersComponent
+    FetchDataComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
