@@ -8,19 +8,27 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project3.Models.EF;
+using Microsoft.AspNetCore.Authorization;
+using NuGet.Protocol.Plugins;
+using NuGet.Protocol;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace project3.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
         private readonly P3_shoppingDBContext _context = new P3_shoppingDBContext();
 
-        //public OrdersController(P3_shoppingDBContext context)
+        //private readonly ILogger<OrdersController> _logger;
+
+        //public OrdersController(ILogger<OrdersController> logger)
         //{
-        //    _context = context;
+        //    _logger = logger;
         //}
 
         // GET: api/Orders
@@ -35,14 +43,6 @@ namespace project3.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
         }
-        /*
-                [HttpGet]
-                public ActionResult OrderDetails()
-                {
-                    UserOrders order = new UserOrders();
-                    var user = User.Identity.Name;
-                    return (ActionResult)order.GetUserOrders(user);
-                }*/
 
         // GET: api/Orders/5
         [HttpGet("{id}")]

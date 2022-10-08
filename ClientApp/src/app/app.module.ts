@@ -144,6 +144,7 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
       { path: 'pedit', component: EditProductComponent },
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
+      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
