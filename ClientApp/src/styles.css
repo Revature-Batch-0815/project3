@@ -7,20 +7,37 @@
 }
 
 .logo{
-  position: absolute;
-  z-index: 1;
   font-family: 'Roboto', sans-serif;
 }
 
-.carousel-inner > .item > img {
-  width:640px;
-  height:360px;
+#cards{
+  border: none;
+  width: 20vw;
+  border-radius: 12px;
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+#cards:hover{
+ transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.bts{
+  text-align: center;
+}
+
+.btn{
+  background-color: #0366d6;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #fff;
+  text-decoration: none;
 }
+
 
 code {
   color: #e01a76;
