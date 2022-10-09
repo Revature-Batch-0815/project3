@@ -29,6 +29,13 @@
 
 /* product cards */
 
+#cat-img-text{
+  color: white;
+  position:absolute;
+  bottom: 0; 
+  font-size: 2.5em;
+}
+
 .cards-wrapper-cat {
   max-width: 150em;
   display: flex;
