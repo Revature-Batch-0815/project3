@@ -30,7 +30,7 @@ import { ViewOrdersComponent } from './components/view-orders/view-orders.compon
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'view-orders', component: ViewOrdersComponent },
+      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
