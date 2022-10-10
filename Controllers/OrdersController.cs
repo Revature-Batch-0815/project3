@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using project3.Models.EF;
 
 namespace project3.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -21,11 +24,25 @@ namespace project3.Controllers
         //}
 
         // GET: api/Orders
+        /*    [HttpGet]
+            public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+            {
+                return await _context.Orders.ToListAsync();
+            }*/
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Orders.ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
         }
+        /*
+                [HttpGet]
+                public ActionResult OrderDetails()
+                {
+                    UserOrders order = new UserOrders();
+                    var user = User.Identity.Name;
+                    return (ActionResult)order.GetUserOrders(user);
+                }*/
 
         // GET: api/Orders/5
         [HttpGet("{id}")]

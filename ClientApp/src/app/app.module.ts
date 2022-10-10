@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
 
@@ -84,7 +85,7 @@ import { MatTableModule } from '@angular/material/table';
     ProductListComponent,
     ProductDetailsComponent,
     PayComponentComponent
-
+    ViewOrdersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -139,14 +140,12 @@ import { MatTableModule } from '@angular/material/table';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pedit', component: EditProductComponent },
+      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-
       { path: 'pay', component: PayComponentComponent },
       { path: 'pdetails', component:ProductDetailsComponent },
-
       { path:'pdetails/:id', component:ProductDetailsComponent },
-
       { path: 'product', component: ProductListComponent },
 
     ]),
