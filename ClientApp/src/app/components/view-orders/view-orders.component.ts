@@ -25,7 +25,7 @@ export class ViewOrdersComponent implements OnInit {
 
   //Below is the code from Jacob's order-details-jacob branch. A huge thanks goes out to him. 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
-    http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true}).subscribe(result => {
+    http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
       this.orders = result;
     }, error => console.error(error));
   }
