@@ -18,7 +18,7 @@ const PROXY_CONFIG = [
       "/connect",
       "/ApplyDatabaseMigrations",
       "/_framework"
-   ],
+    ],
     target: target,
     secure: false,
     headers: {
