@@ -60,6 +60,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { PayComponentComponent } from './components/pay-component/pay-component.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
+import { MatTableModule } from '@angular/material/table';
+//MatListModule,MatIconModule,
 
 
 
@@ -125,7 +134,7 @@ import { PayComponentComponent } from './components/pay-component/pay-component.
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatTableModule,
+ 
     MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
