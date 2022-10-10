@@ -84,7 +84,7 @@ import { MatTableModule } from '@angular/material/table';
     EditProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    PayComponentComponent
+    PayComponentComponent,
     ViewOrdersComponent
   ],
   imports: [
