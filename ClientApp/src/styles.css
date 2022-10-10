@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Voces&display=swap');
 
 :root {
   --yellow: #fca311;
@@ -18,6 +19,11 @@
 
 
 /* header */
+#head-text{
+  font-size: 4.50vh;
+  font-family: 'Baloo 2', cursive;
+}
+
 .block {
   height: 5em;
   width: 10em;
