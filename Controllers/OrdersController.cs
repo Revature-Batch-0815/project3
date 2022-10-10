@@ -8,12 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project3.Models.EF;
-using Microsoft.AspNetCore.Authorization;
 using NuGet.Protocol.Plugins;
 using NuGet.Protocol;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
 
 namespace project3.Controllers
 {
