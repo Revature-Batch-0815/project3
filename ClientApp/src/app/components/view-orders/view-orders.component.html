@@ -1,25 +1,3 @@
-<!--<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title></title>
-</head>
-<body>-->
-  <!--<button (click)="_makeApiCall.getOrderDetails()"> Show Orders  </button>-->
-
-  <!--<table>
-    <thead>
-      <tr>
-        <th>Order ID</th>
-        <th>Product ID</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let order of orders">
-      <td> {{ order.orderId }} </td>
-      <td> {{ order.productId }} </td>
-    </tr>
-  </table>
-</body>
-</html>-->
-
 <h3>
   Hi {{ userName | async }}! Here are your orders-
 </h3>
@@ -31,14 +9,20 @@
       <th>Order Date</th>
       <th>Order Amount</th>
       <th>User ID</th>
+      <th>Order Status</th>
+      <th>Product Name</th>
+      <th>Product Price</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let order of orders">
-      <td> {{ order.ordersId }} </td>
-      <td> {{ order.orderDate | date : 'short' }} </td>
+      <td> {{ order.orderId }} </td>
+      <td> {{ order.orderDate }} </td>
       <td> {{ order.orderAmount }} </td>
       <td> {{ order.userId }} </td>
+      <td> {{ order.orderStatus }} </td>
+      <td> {{ order.productName }} </td>
+      <td> {{ order.productPrice }} </td>
     </tr>
   </tbody>
 </table>

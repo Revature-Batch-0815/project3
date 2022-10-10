@@ -142,6 +142,7 @@ import { MatTableModule } from '@angular/material/table';
       { path: 'pedit', component: EditProductComponent },
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
+      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'pay', component: PayComponentComponent },
       { path: 'pdetails', component:ProductDetailsComponent },
