@@ -4,10 +4,10 @@
     <mat-card class="example-card prodCard">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title><a routerLink="/pdetails">{{item.productName}}</a></mat-card-title>
+        <mat-card-title><a [routerLink]="['/pdetails', item.productId]">{{item.productName}}</a></mat-card-title>
         <mat-card-subtitle>{{item.productCategory}}</mat-card-subtitle>
       </mat-card-header>
-      <a routerLink="/pdetails">
+      <a [routerLink]="['/pdetails', item.productId]">
       <img style="padding-top:20px" mat-card-image src={{item.productImgUrl}} alt="Photo of a Shiba Inu">
       </a>
       <mat-card-content>

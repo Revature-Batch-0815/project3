@@ -140,7 +140,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
 
-      { path:'pdetails', component:ProductDetailsComponent },
+      { path:'pdetails/:id', component:ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
 
     ]),
