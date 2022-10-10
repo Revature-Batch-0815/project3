@@ -28,6 +28,16 @@ body{
   margin-bottom: .5em;
 }
 
+.banner-head-text > h1, p, a{
+  font-family: 'Kanit', sans-serif;
+}
+
+.banner-head-text > a {
+  background-color: #2382b9;
+  padding: 5px;
+  border-radius: 12px;
+}
+
 /* header */
 #head-text{
   font-size: 3.0vh;
