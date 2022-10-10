@@ -6,7 +6,16 @@
   --dark-blue: #14213d;
   --off-white: #e5e5e5;
   --darkest-blue: #0c1322;
+  /* Dark Mode */
+  --slate: #3a506b;
+  --desat-blue: #1c2541;
 }
+
+/* body{
+  background-color: var(--darkest-blue);
+  color: var(--off-white);
+} */
+
 
 /* header */
 .block {
