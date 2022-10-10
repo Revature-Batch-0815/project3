@@ -41,9 +41,11 @@ namespace project3.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var order = await _context.Orders.FindAsync(id);
 
-            if (order == null)
+            if (order == null || order.UserId != userId)
             {
                 return NotFound();
             }
@@ -87,6 +89,9 @@ namespace project3.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
+            order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            order.OrderDate = DateTime.Now;
+
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
