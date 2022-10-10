@@ -15,5 +15,14 @@ input, textarea{
 #header{
     color: #FCA311;
     align-content: center;
-    padding: 40px;
+    max-height: 40vh;
+    /* padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh; */
+    /* padding:112px; */
+    padding-top:24%;
+    padding-bottom: 24%;
+    padding-left: 30%;
+    padding-right: 10%;
 }
