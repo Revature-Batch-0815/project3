@@ -141,8 +141,12 @@ import { PayComponentComponent } from './components/pay-component/pay-component.
       { path: 'pedit', component: EditProductComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+
       { path: 'pay', component: PayComponentComponent },
       { path: 'pdetails', component:ProductDetailsComponent },
+
+      { path:'pdetails/:id', component:ProductDetailsComponent },
+
       { path: 'product', component: ProductListComponent },
 
     ]),
