@@ -32,9 +32,18 @@ namespace project3.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
+            //Get user id
+            //Get OrderDetails table based on user id
+            //Get productId from OrdersDetails table
+            //Join(productId => product information to display)
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
+            var orderIds = from o in _context.Orders where o.UserId == userId select o;
+            Console.WriteLine(orderIds);
+            return await orderIds.ToListAsync();
+
+            //return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
         }
+
         /*
                 [HttpGet]
                 public ActionResult OrderDetails()
