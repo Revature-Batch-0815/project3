@@ -1,22 +1,27 @@
 
 <div class="row">
     <div class="col">
-        <p>please contact us useing the below</p>
+        <h6>please contact us useing the below</h6>
         <ul class="list-group">
             <li class="list-group-item">email: fake@email.com</li>
             <li class="list-group-item">phone: 222-222-2222</li>
             <li class="list-group-item">twitter: company name</li>
         </ul>
+        <a href = "mailto: abc@example.com">Send Email</a>
     </div>
     <div class="col">
-        <form class="addPost" action="https://formspree.io/f/xjvzwgnw" method="post">
+        <h6>if you want to send an email from here</h6>
+        <form class="addPost" action="https://formsubmit.co/quinlan236@revature.net" method="post">
             <div class="form-group">
+                <input type="hidden" name="_subject" value="Customer Feedback">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://localhost:44424/contact-us">
             <label for="name">name</label>
             <input type="text" name="name" id="" class="form-control">
             </div>
             <div class="form-group">
             <label for="email">email</label>
-            <input type="email" name="email" class="form-control">
+            <input type="email" name="email" class="form-control" required>
             </div>
             <div class="form-group">
             <label for="content">content</label>
