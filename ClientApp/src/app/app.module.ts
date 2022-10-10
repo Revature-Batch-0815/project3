@@ -147,9 +147,25 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
       { path: 'pedit', component: EditProductComponent },
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
-      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-    ])
+      {
+        path: 'view-orders',
+        component: ViewOrdersComponent,
+        canActivate: [AuthorizeGuard],
+      },
+      {
+        path: 'fetch-data',
+        component: FetchDataComponent,
+        canActivate: [AuthorizeGuard],
+      },
+      { path: 'contact-us', component: ContactUsComponent },
+      { path: 'pay', component: PayComponentComponent },
+      { path: 'pdetails', component: ProductDetailsComponent },
+      { path: 'pdetails/:id', component: ProductDetailsComponent },
+      { path: 'product', component: ProductListComponent },
+      { path: 'pcreate', component: CreateProductComponent },
+
+    ]),
+    BrowserAnimationsModule,
   ],
   exports: [
     MatAutocompleteModule,
