@@ -2,9 +2,9 @@
     background-color: #14213d;
     color: #e5e5e5;
     border-radius: 3%;
-    position: absolute;
-    left: 35%;
-    top: 30%;
+    position: relative;
+    left: 0%; /* 35% */
+    top: 0%;
 }
 input, textarea{
     background-color: #e5e5e5;
@@ -12,6 +12,8 @@ input, textarea{
 .btn{
     background-color: #FCA311;
 }
-h6{
+#header{
     color: #FCA311;
+    align-content: center;
+    padding: 40px;
 }
