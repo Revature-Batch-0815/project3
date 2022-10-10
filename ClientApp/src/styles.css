@@ -1,27 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Voces&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 :root {
   --yellow: #fca311;
   --dark-blue: #14213d;
   --off-white: #e5e5e5;
   --darkest-blue: #0c1322;
   /* Dark Mode */
-  --slate: #3a506b;
-  --desat-blue: #1c2541;
+  --slate: #2B3C4F;
+  --gunmetal-blue: #1A2227;
 }
 
-/* body{
-  background-color: var(--darkest-blue);
+body{
+  background-color: var(--gunmetal-blue);
   color: var(--off-white);
-} */
+}
 
 
 /* header */
 #head-text{
-  font-size: 4.50vh;
-  font-family: 'Baloo 2', cursive;
+  font-size: 3.0vh;
+  font-family: 'Kanit', sans-serif;
 }
 
 .block {
@@ -37,12 +35,14 @@
   font-family: "Roboto", sans-serif;
 }
 
-#heading-text {
-  margin-left: 7em;
-  font-size: 1.5em;
-}
 
 /* Retro Highlight */
+
+#retro{
+  padding: 2vw;
+  background-color: var(--slate);
+}
+
  .hovercap {
   box-sizing: border-box;
   height: 100%;
@@ -73,18 +73,27 @@
 
 /* product cards */
 
+#category{
+  justify-content: center;
+  padding: 4px;
+}
+
 #cat-img-text{
   color: white;
   position:absolute;
   bottom: 0; 
-  font-size: 2.5vw;
+  left: 16vw;
+  font-size: 1vw;
+}
+
+#cat-card{
+  max-width: 40vw;
 }
 
 .cards-wrapper-cat {
-  max-width: 150em;
   display: flex;
-  margin-bottom: 1em;
   justify-content: center;
+  margin-bottom: 1em;
 }
 
 #cat-card {
@@ -96,6 +105,7 @@
   0.3s box-shadow,
   0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
+
 
 
 #retro-card {
