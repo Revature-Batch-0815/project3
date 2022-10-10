@@ -25,8 +25,7 @@ export class ViewOrdersComponent implements OnInit {
 
   //Below is the code from Jacob's order-details-jacob branch. A huge thanks goes out to him. 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
-    //baseUrl = baseUrl.split(":")[0] + ":" + baseUrl.split(":")[1] + ":7108/";
-    http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
+    http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true}).subscribe(result => {
       this.orders = result;
     }, error => console.error(error));
   }
@@ -38,10 +37,14 @@ export class ViewOrdersComponent implements OnInit {
 }
 
 interface Order {
-  ordersId: number;
-  orderDate: string;
-  orderAmount: number;
-  userId: number;
-  productId: number;
-  orderId: number;
+  orderAmount: number,
+  orderDate: string,
+  orderDetails: string,
+  orderId: number,
+  orderStatus: string,
+  productDescription: string,
+  productId: number,
+  productName: string,
+  productPrice: number,
+  userId: string
 }
