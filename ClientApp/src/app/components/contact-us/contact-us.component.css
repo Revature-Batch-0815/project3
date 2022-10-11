@@ -2,13 +2,27 @@
     background-color: #14213d;
     color: #e5e5e5;
     border-radius: 3%;
-    position: absolute;
-    left: 35%;
-    top: 30%;
+    position: relative;
+    left: 0%; /* 35% */
+    top: 0%;
 }
 input, textarea{
     background-color: #e5e5e5;
 }
 .btn{
     background-color: #FCA311;
+}
+#header{
+    color: #FCA311;
+    align-content: center;
+    max-height: 40vh;
+    /* padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh; */
+    /* padding:112px; */
+    padding-top:24%;
+    padding-bottom: 24%;
+    padding-left: 30%;
+    padding-right: 10%;
 }
