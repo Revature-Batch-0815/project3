@@ -22,24 +22,8 @@ body {
 /* Banner */
 .banner-head-text {
   position: absolute;
+  top: 40px;
   z-index: 2;
-}
-
-.banner-head-text > h1 {
-  font-size: 10vh;
-  margin-bottom: 0.5em;
-}
-
-.banner-head-text > h1,
-p,
-a {
-  font-family: "Kanit", sans-serif;
-}
-
-.banner-head-text > a {
-  background-color: #2382b9;
-  padding: 5px;
-  border-radius: 12px;
 }
 
 /* header */
