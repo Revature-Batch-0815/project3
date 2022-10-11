@@ -1,4 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppServiceService } from 'src/app/Services/app-services.service';
+import { Product } from 'src/products.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,9 +9,16 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
-  constructor() {}
+  Products: Product[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private service: AppServiceService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    // this.route.params.subscribe((params) => this.getProductsBySearchTerm());
+  }
 
   enterSearchValue: string = '';
 
@@ -17,5 +27,15 @@ export class SearchBarComponent implements OnInit {
 
   onSearchTextChanged() {
     this.searchTextChanged.emit(this.enterSearchValue);
+    this.getProductsBySearchTerm();
+  }
+
+  getProductsBySearchTerm() {
+    this.service
+      .searchProducts(this.enterSearchValue)
+      .subscribe((data: Product[]) => {
+        this.Products = data;
+        console.log(data);
+      });
   }
 }
