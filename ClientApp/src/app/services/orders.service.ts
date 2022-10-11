@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,6 @@ export class OrdersService {
   constructor(_httpREF: HttpClient) {
     this._http = _httpREF;
   }
-  getOrderDetails() {
-    return this._http.get('https://localhost:7108/api/Orders').subscribe(result => {
       this.orders = result;
       console.log(result);
     });

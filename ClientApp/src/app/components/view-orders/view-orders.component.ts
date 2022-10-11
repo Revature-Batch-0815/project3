@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Component, OnInit, Inject } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -66,7 +67,9 @@ export class ViewOrdersComponent implements OnInit {
   }
 */
 
-  //Below is the code from Jacob's order-details-jacob branch. A huge thanks goes out to him. 
+  //constructor(private authorizeService: AuthorizeService) {
+  //  this._makeApiCall = _apicallREF;
+  //}
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
     //baseUrl = baseUrl.split(":")[0] + ":" + baseUrl.split(":")[1] + ":7108/";
     http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
@@ -79,13 +82,18 @@ export class ViewOrdersComponent implements OnInit {
     this.isAuthenticated = this.authorizeService.isAuthenticated();
     this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
   }
+}
 
 }
 interface Order {
-  ordersId: number;
-  orderDate: string;
-  orderAmount: number;
-  userId: number;
-  productId: number;
-  orderId: number;
+  orderAmount: number,
+  orderDate: string,
+  orderDetails: string,
+  orderId: number,
+  orderStatus: string,
+  productDescription: string,
+  productId: number,
+  productName: string,
+  productPrice: number,
+  userId: string
 }
