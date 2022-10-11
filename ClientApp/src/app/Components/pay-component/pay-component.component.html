@@ -1,22 +1,31 @@
 <div #paypalRef></div>
 
 <button (click)="addCart()">Save Data</button>
-<button (click)="showCart()">Refresh Data</button>
+<button (click)="showCart()">Show Data</button>
 
 <div *ngFor="let item of cart2">
   <h1>{{item.productName}}</h1>
 </div>
+<hr>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container *ngFor="let item of cart2" [matColumnDef]="column.columnDef">
-    <th mat-header-cell *matHeaderCellDef>
-      {{column.header}}
-    </th>
-    <td mat-cell *matCellDef="let row">
-      {{column.cell(row)}}
-    </td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<ng-container *ngIf="dataSource; else defaultValue">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+      <th mat-header-cell *matHeaderCellDef>
+        {{column.header}}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{column.cell(row)}}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ng-container>
+
+<ng-template #defaultValue>
+  No value
+</ng-template>
