@@ -1,11 +1,9 @@
 <header>
-<<<<<<< HEAD
   <nav
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">project3</a>
-=======
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -28,7 +26,6 @@
           />
         </svg>
       </a>
->>>>>>> origin/navigation
       <button
         class="navbar-toggler"
         type="button"
@@ -40,29 +37,23 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/navigation
       <div
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
         [ngClass]="{ show: isExpanded }"
       >
-<<<<<<< HEAD
-=======
         <!-- searchbar nav -->
         <app-search-bar
           (searchTextChanged)="onSearchTextEntered($event)"
         ></app-search-bar>
 
->>>>>>> origin/navigation
+
         <ul class="navbar-nav flex-grow">
           <li
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-<<<<<<< HEAD
+
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
@@ -77,7 +68,7 @@
           </li>
         </ul>
         <app-login-menu></app-login-menu>
-=======
+
             <a class="nav-link text-light" [routerLink]="['/']">Home</a>
           </li>
           <li
@@ -116,7 +107,7 @@
             </a>
           </li>
         </ul>
->>>>>>> origin/navigation
+
       </div>
     </div>
   </nav>
