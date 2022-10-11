@@ -186,7 +186,7 @@ export class PayComponentComponent implements OnInit {
     window.paypal.Buttons(
       {
         style: {
-          layout: 'horizontal',
+          layout: 'vertical',
           color: 'blue',
           shape: 'rect',
           label: 'paypal'
