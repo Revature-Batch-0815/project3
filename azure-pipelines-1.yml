@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: Project3
+pool: Jacob
 
 variables:
   solution: '**/*.sln'
