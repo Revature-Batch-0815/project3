@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ViewOrdersComponent } from './components/view-orders/view-orders.compon
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +35,8 @@ import { ViewOrdersComponent } from './components/view-orders/view-orders.compon
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'cart', component: CartComponent },
+
     ])
   ],
   providers: [
