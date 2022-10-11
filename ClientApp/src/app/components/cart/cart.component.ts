@@ -6,16 +6,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
-  saveData() {
-    let data = { productId: 10 }
-    localStorage.setItem('cookie', JSON.stringify(data));
+export class CartComponent implements OnInit {
+
+  constructor(public cartDetails: CartService) { }
+
+  ngOnInit(): void {
   }
 
-  loadData() {
-    let data = localStorage.getItem('cookie');
-    alert(data);
-
-
-  }
 }
