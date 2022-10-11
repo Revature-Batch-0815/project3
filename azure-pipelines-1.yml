@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: Default
+pool: project3-agentpool
 
 variables:
   solution: '**/*.sln'
