@@ -23,7 +23,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) and (min-width:577px){
   #search {
     height: 5vh;
     width: 10vw;
@@ -39,8 +39,26 @@
     margin-right: 2vw;
   }
  }
- @media (max-width: 770px) {
+ @media (max-width: 770px) and (min-width:577px){
   #search,.search-btn{
     visibility: hidden;
   }
+}
+
+@media (max-width: 575px){
+  #search {
+    height: 5vh;
+    width: 50vw;
+    border: none;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .search-btn {
+    width: 5.8vw;
+    height: 5.01vh;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    margin-right: 2vw;
+  }
+
 }

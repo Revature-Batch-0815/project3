@@ -20,30 +20,17 @@ body {
 }
 
 /* Banner */
-.banner-head-text {
-  position: absolute;
-  top: 40px;
-  z-index: 2;
-}
+
 
 /* header */
-#head-text {
-  font-size: 3vh;
-  font-family: "Kanit", sans-serif;
-}
-
-.block {
-  height: 5em;
-  width: 10em;
-}
-
-#web-header {
+.header{
+  justify-content: center;
   text-align: center;
 }
 
-.logo {
-  font-family: "Roboto", sans-serif;
-}
+
+
+
 
 /* Retro Highlight */
 
@@ -134,7 +121,10 @@ body {
   background-color: var(--yellow);
   padding: 10px;
   margin-right: .5vw;
+  margin-bottom: 10px;
+  color: white;
   font-weight: 10px;
+  border: none;
   border-radius: 12px;
 }
 
