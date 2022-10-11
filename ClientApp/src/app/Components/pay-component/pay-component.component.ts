@@ -145,46 +145,9 @@ export class PayComponentComponent implements OnInit {
     productQty: 4
   }];
 
-  columns = [
-    {
-      columnDef: 'id',
-      header: 'ID',
-      cell: (element: product) => `${element.productID}`,
-    },
-    {
-      columnDef: 'name',
-      header: 'Name',
-      cell: (element: product) => `${element.productName}`,
-    },
-    {
-      columnDef: 'category',
-      header: 'Category',
-      cell: (element: product) => `${element.productCategory}`,
-    },
-    {
-      columnDef: 'description',
-      header: 'Description',
-      cell: (element: product) => `${element.productDesc}`,
-    },
-    {
-      columnDef: 'imageurl',
-      header: 'Image URL',
-      cell: (element: product) => `${element.productImgUrl}`,
-    },
-    {
-      columnDef: 'price',
-      header: 'Price',
-      cell: (element: product) => `${element.productPrice}`,
-    },
-    {
-      columnDef: 'quantity',
-      header: 'Quantity',
-      cell: (element: product) => `${element.productQty}`,
-    },
-  ];
-  data: string = localStorage.getItem('Cart');
+
+  data: any = localStorage.getItem('Cart');
   dataSource = JSON.parse(this.data);
-  displayedColumns = this.columns.map(c => c.columnDef);
 
   constructor() { }
   @ViewChild('paypalRef', { static: true })
@@ -228,44 +191,4 @@ export class PayComponentComponent implements OnInit {
 
 }
 
-//export class TableGeneratedColumnsExample {
-//  columns = [
-//    {
-//      columnDef: 'id',
-//      header: 'ID',
-//      cell: (element: product) => `${element.productID}`,
-//    },
-//    {
-//      columnDef: 'name',
-//      header: 'Name',
-//      cell: (element: product) => `${element.productName}`,
-//    },
-//    {
-//      columnDef: 'category',
-//      header: 'Category',
-//      cell: (element: product) => `${element.productCategory}`,
-//    },
-//    {
-//      columnDef: 'description',
-//      header: 'Description',
-//      cell: (element: product) => `${element.productDesc}`,
-//    },
-//    {
-//      columnDef: 'imageurl',
-//      header: 'Image URL',
-//      cell: (element: product) => `${element.productImgUrl}`,
-//    },
-//    {
-//      columnDef: 'price',
-//      header: 'Price',
-//      cell: (element: product) => `${element.productPrice}`,
-//    },
-//    {
-//      columnDef: 'quantity',
-//      header: 'Quantity',
-//      cell: (element: product) => `${element.productQty}`,
-//    },
-//  ];
-//  dataSource = localStorage.getItem('Cart');
-//  displayedColumns = this.columns.map(c => c.columnDef);
-//}
+
