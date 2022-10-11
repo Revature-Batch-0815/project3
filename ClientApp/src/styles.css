@@ -10,6 +10,10 @@
   --gunmetal-blue: #1a2227;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--gunmetal-blue);
   color: var(--off-white);
@@ -19,8 +23,6 @@ body {
 .banner-head-text {
   position: absolute;
   z-index: 2;
-  top: 20vh;
-  left: 37vw;
 }
 
 .banner-head-text > h1 {
@@ -141,12 +143,13 @@ a {
 .card-body {
   color: #ffff;
   background-color: var(--slate);
+  text-align: center;
 }
 
 .c-btn {
   background-color: var(--yellow);
   padding: 10px;
-  margin-right: 5px;
+  margin-right: .5vw;
   font-weight: 10px;
   border-radius: 12px;
 }
