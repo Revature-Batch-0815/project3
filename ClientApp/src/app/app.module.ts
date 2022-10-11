@@ -14,6 +14,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { CartComponent } from './components/cart/cart.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
 
@@ -79,12 +81,8 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    CreateProductComponent,
-    EditProductComponent,
-    ProductListComponent,
-    ProductDetailsComponent,
-    PayComponentComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -143,13 +141,9 @@ import { MatTableModule } from '@angular/material/table';
       { path: 'counter', component: CounterComponent },
       { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'pay', component: PayComponentComponent },
-      { path: 'pdetails', component:ProductDetailsComponent },
-      { path:'pdetails/:id', component:ProductDetailsComponent },
-      { path: 'product', component: ProductListComponent },
+      { path: 'cart', component: CartComponent },
 
-    ]),
-    BrowserAnimationsModule
+    ])
   ],
   exports: [
     MatAutocompleteModule,
