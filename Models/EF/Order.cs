@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace project3.Models.EF
@@ -15,8 +14,8 @@ namespace project3.Models.EF
         public DateTime OrderDate { get; set; }
         public decimal OrderAmount { get; set; }
         public string UserId { get; set; } = null!;
-        [JsonIgnore]
-        public virtual AspNetUser? User { get; set; } = null!;
+
+        public virtual AspNetUser User { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

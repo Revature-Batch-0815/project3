@@ -31,20 +31,14 @@
       <th>Order Date</th>
       <th>Order Amount</th>
       <th>User ID</th>
-      <th>Order Status</th>
-      <th>Product Name</th>
-      <th>Product Price</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let order of orders">
-      <td> {{ order.orderId }} </td>
-      <td> {{ order.orderDate }} </td>
+      <td> {{ order.ordersId }} </td>
+      <td> {{ order.orderDate | date : 'short' }} </td>
       <td> {{ order.orderAmount }} </td>
       <td> {{ order.userId }} </td>
-      <td> {{ order.orderStatus }} </td>
-      <td> {{ order.productName }} </td>
-      <td> {{ order.productPrice }} </td>
     </tr>
   </tbody>
 </table>
