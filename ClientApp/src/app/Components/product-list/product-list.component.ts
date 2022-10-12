@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../Services/app-services.service';
+import { searchInputService } from 'src/app/Services/search-input.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,8 +11,14 @@ import { AppServiceService } from '../../Services/app-services.service';
 export class ProductListComponent implements OnInit {
   Products: Product[] = [];
 
-  @Input() searchTerm: string = '';
-  constructor(private productService: AppServiceService) {}
+  constructor(
+    private productService: AppServiceService,
+    private _searchInputService: searchInputService
+  ) {
+    _searchInputService.changeEmitted$.subscribe((text) => {
+      console.log(text);
+    });
+  }
 
   ngOnInit(): void {
     this.productService

@@ -10,6 +10,5 @@ export class AppComponent {
 
   getSearchTermFromNav(searchValue: string) {
     this.searchTerm = searchValue;
-    console.log(this.searchTerm);
   }
 }

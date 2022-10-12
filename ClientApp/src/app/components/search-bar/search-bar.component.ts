@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppServiceService } from 'src/app/services/app-services.service';
+import { AppServiceService } from 'src/app/Services/app-services.service';
+import { searchInputService } from 'src/app/Services/search-input.service';
 import { Product } from 'src/products.model';
 
 @Component({
@@ -13,7 +14,8 @@ export class SearchBarComponent implements OnInit {
 
   constructor(
     private service: AppServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _searchInputService: searchInputService
   ) {}
 
   ngOnInit(): void {}
@@ -24,7 +26,8 @@ export class SearchBarComponent implements OnInit {
   textChangeEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   onSearchTextChanged() {
-    this.textChangeEmitter.emit(this.enterSearchValue);
+    // this.textChangeEmitter.emit(this.enterSearchValue);
+    this._searchInputService.emitChange(this.enterSearchValue);
     this.getProductsBySearchTerm();
   }
 
