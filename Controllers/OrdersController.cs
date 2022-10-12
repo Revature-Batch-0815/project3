@@ -11,7 +11,7 @@ using project3.Models.EF;
 
 namespace project3.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
