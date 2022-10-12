@@ -1,8 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../Services/app-services.service';
-
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-list',
@@ -11,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductListComponent implements OnInit {
   Products: Product[] = [];
-  searchTerm: string = '';
 
+  @Input() searchTerm: string = '';
   constructor(private productService: AppServiceService) {}
 
   ngOnInit(): void {

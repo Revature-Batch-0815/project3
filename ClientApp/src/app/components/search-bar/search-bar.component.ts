@@ -21,10 +21,10 @@ export class SearchBarComponent implements OnInit {
   enterSearchValue: string = '';
 
   @Output()
-  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+  textChangeEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   onSearchTextChanged() {
-    this.searchTextChanged.emit(this.enterSearchValue);
+    this.textChangeEmitter.emit(this.enterSearchValue);
     this.getProductsBySearchTerm();
   }
 

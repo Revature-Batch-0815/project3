@@ -39,7 +39,7 @@
       >
         <!-- searchbar nav -->
         <app-search-bar
-          (searchTextChanged)="onSearchTextEntered($event)"
+          (textChangeEmitter)="getSearchTermFromInput($event)"
         ></app-search-bar>
 
         <ul class="navbar-nav flex-grow">
