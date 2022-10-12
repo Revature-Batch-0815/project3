@@ -22,7 +22,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ProductListComponent } from './Components/product-list/product-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
@@ -61,8 +61,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { PayComponentComponent } from './Components/pay-component/pay-component.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { PayComponentComponent } from './components/pay-component/pay-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
