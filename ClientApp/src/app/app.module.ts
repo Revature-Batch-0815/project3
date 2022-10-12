@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 //angular materials
 // Material Form Controls
@@ -79,6 +80,7 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    SearchBarComponent,
     CreateProductComponent,
     EditProductComponent,
     ProductListComponent,
