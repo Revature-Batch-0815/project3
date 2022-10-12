@@ -164,6 +164,8 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
       { path: 'product', component: ProductListComponent },
       { path: 'pedit/:id', component: EditProductComponent },
       { path: 'pcreate', component: CreateProductComponent },
+      { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'paySuccess', component: PaySuccessComponent }
 
     ]),
     BrowserAnimationsModule,

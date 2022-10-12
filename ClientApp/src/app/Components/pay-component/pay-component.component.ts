@@ -57,7 +57,7 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService) { }
+  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   userID?: any;
@@ -141,6 +141,9 @@ export class PayComponentComponent implements OnInit {
     for (let x in this.cartNum) {
       this.getProductById(this.cartNum[x]);
     }
+  }
+
+  updateSubtotal() {
     for (let x in this.cart2) {
       this.subtotal += parseFloat(this.cart2[x].productPrice);
       this.subtotal = parseFloat(this.subtotal.toFixed(2));
