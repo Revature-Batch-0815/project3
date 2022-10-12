@@ -1,28 +1,72 @@
+
+<body>
+<section class="contact-head">
+  <p class="text-center">Contact Us<p>
+</section>
+<section class="contact-body">
 <div class="row">
   <div class="col">
-    <p>Please contact us using the below form</p>
-    <ul class="list-group">
-      <li class="list-group-item">Email: contact-us@revtech.azurewebsites.net</li>
-      <li class="list-group-item">Phone: 1-800-238-2222</li>
-      <li class="list-group-item">Twitter: RevTech</li>
-    </ul>
-  </div>
-  <div class="col">
+    <h1 class="text-center">Frequently Asked Questions</h1>
+    <div class="accordion accordion-dark text-dark" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Where can any coupon codes be entered?
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Any and all coupon codes should be entered upon checkout before payment is issued!</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Is there Shipping available outside of the US?
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            Are all consoles tested before shipping?
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Where do you source your retro devices?
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div class="col" id="contact-email">
+    <h1 class="text-center">Drop us a line!</h1>
     <form
       class="addPost"
       action="https://formspree.io/f/xoqbllzg"
       method="POST"
     >
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Your Name</label>
         <input type="text" name="name" id="" class="form-control" />
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Your Email</label>
         <input type="email" name="email" class="form-control" />
       </div>
       <div class="form-group">
-        <label for="content">Message</label>
+        <label for="content">Content</label>
         <textarea
           name="content"
           id=""
@@ -35,8 +79,9 @@
     </form>
   </div>
 </div>
-
+</section>
 <!-- <input type="text" placeholder="Name" class="form-control" id="fName"/>
             <input type="email" name="email" id="fEmail" placeholder="name@example.com"class="form-control">
             <textarea name="Description" id="fDescription" cols="30" rows="10" class="form-control"></textarea>
             <input type="submit" class="btn btn-secondary"> -->
+</body>
