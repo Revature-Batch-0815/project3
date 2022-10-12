@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from 'src/app/Services/orders.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
 
 

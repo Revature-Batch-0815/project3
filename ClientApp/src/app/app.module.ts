@@ -14,7 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { ViewOrdersComponent } from './Components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
 
@@ -60,7 +60,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { PayComponentComponent } from './components/pay-component/pay-component.component';
+import { PayComponentComponent } from './Components/pay-component/pay-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
