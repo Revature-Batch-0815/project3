@@ -147,7 +147,9 @@ import { MatTableModule } from '@angular/material/table';
       { path: 'pdetails', component:ProductDetailsComponent },
       { path:'pdetails/:id', component:ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
+      { path: 'pcreate', component: CreateProductComponent },
       { path: 'pedit/:id', component: EditProductComponent },
+
     ]),
     BrowserAnimationsModule
   ],
