@@ -122,7 +122,11 @@ namespace project3.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+            {
+                order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            
             order.OrderDate = DateTime.Now;
 
             _context.Orders.Add(order);
