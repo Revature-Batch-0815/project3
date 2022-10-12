@@ -5,8 +5,14 @@ body{
 
 .contact-head{
     font-size: 2.5em;
+    padding: 5px;
     background-color: var(--slate);
     font-family: 'Kanit', sans-serif;
+    margin-bottom: 10px;
+}
+
+#faq{
+    text-align: center;
 }
 
 #contact-email{
@@ -16,6 +22,11 @@ body{
 #accordionFlushExample{
     margin-left: 2vw;
 }
+
+.contact-icons > a{
+    margin: 10px;
+}
+
 
 .row{
     color: #e5e5e5;
