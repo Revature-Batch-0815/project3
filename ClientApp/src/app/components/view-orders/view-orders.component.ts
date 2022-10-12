@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from 'src/app/Services/orders.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
