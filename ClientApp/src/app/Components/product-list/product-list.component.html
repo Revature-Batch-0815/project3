@@ -4,7 +4,7 @@
       class="example-card prodCard"
       *ngIf="
         searchTerm === '' ||
-        product.productName.toLowerCase().includes(searchTerm)
+        item.productName.toLowerCase().includes(searchTerm)
       "
     >
       <mat-card-header>

@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppServiceService } from 'src/app/Services/app-services.service';
+import { AppServiceService } from 'src/app/services/app-services.service';
 import { Product } from 'src/products.model';
 
 @Component({
