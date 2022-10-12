@@ -16,9 +16,7 @@ export class SearchBarComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    // this.route.params.subscribe((params) => this.getProductsBySearchTerm());
-  }
+  ngOnInit(): void {}
 
   enterSearchValue: string = '';
 
