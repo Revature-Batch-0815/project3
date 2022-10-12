@@ -177,13 +177,8 @@ export class PayComponentComponent implements OnInit {
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   ngOnInit(): void {
-    //let data: any = localStorage.getItem('Cart');
-    //this.cart2 = JSON.parse(data);
-    //$(".paypal-button-spinner").onClick(console.log("paypall button clicked. You have done it Tarnished."));
-    //var thePaypallButton = document.getElementsByClassName("paypal-button-spinner");
-    //thePaypallButton[0].setAttribute("id", "payButton");
-    /*    thePaypallButton[0].addEventListener("click", this.clearCart);*/
-
+    
+    console.log(this.cart2);
 
     window.paypal.Buttons(
       {
@@ -193,16 +188,28 @@ export class PayComponentComponent implements OnInit {
           shape: 'rect',
           label: 'paypal'
         },
-        createOrder: (data: any, actions: { order: { create: (arg0: { purchase_units: { amount: { value: string; currency_code: string; }; }[]; }) => any; }; }) => {
+        createOrder: (data:any , actions:any) => {
           return actions.order.create({
             purchase_units: [
               {
+
                 amount: {
                   value: this.subtotal.toFixed(2),
                   currency_code: 'USD'
                 }
               }
             ]
+          });
+        },
+        onApprove: function (data: any, actions: any) {
+          // This function captures the funds from the transaction.
+          
+          localStorage.clear();
+          //go to a new page
+          //that page goes to the home page
+          return actions.order.capture().then(function (details:any) {
+            // This function shows a transaction success message to your buyer.
+            alert('Transaction completed by ' + details.payer.name.given_name);
           });
         }
       }
