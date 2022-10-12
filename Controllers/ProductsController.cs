@@ -15,20 +15,41 @@ namespace project3.Controllers
     {
         private readonly P3_shoppingDBContext _context = new P3_shoppingDBContext();
 
-        //public ProductsController(P3_shoppingDBContext context)
-        //{
-        //    _context = context;
-        //}
+        // Search a product
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Product>>> Search(string productSearchTerm)
+        {
+            try
+            {
+                IQueryable<Product> products = _context.Products;
+                if (!string.IsNullOrEmpty(productSearchTerm))
+                {
+                    products = products.Where(e => e.ProductName.Contains(productSearchTerm)
+                        || e.ProductDescription.Contains(productSearchTerm));
+                }
+               var result =  await products.ToListAsync();
 
-        // GET: api/Products
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            }
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _context.Products.ToListAsync();
         }
 
+        
         // GET: api/Products/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);

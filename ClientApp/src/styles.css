@@ -1,61 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
 :root {
   --yellow: #fca311;
   --dark-blue: #14213d;
   --off-white: #e5e5e5;
   --darkest-blue: #0c1322;
   /* Dark Mode */
-  --slate: #2B3C4F;
-  --gunmetal-blue: #1A2227;
+  --slate: #2b3c4f;
+  --gunmetal-blue: #1a2227;
 }
 
-body{
+html{
+  overflow-x: hidden;
+}
+
+body {
   background-color: var(--gunmetal-blue);
   color: var(--off-white);
 }
 
 /* Banner */
-.banner-head-text{
-  position: absolute;
-  z-index: 2;
-  top: 20vh;
-  left: 37vw;
-}
 
-.banner-head-text > h1 {
-  font-size: 10vh;
-  margin-bottom: .5em;
-}
 
 /* header */
-#head-text{
-  font-size: 3.0vh;
-  font-family: 'Kanit', sans-serif;
-}
-
-.block {
-  height: 5em;
-  width: 10em;
-}
-
-#web-header {
+.header{
+  justify-content: center;
   text-align: center;
 }
 
-.logo {
-  font-family: "Roboto", sans-serif;
-}
+
+
 
 
 /* Retro Highlight */
 
-#retro{
+#retro {
   padding: 2vw;
   background-color: var(--slate);
 }
 
- .hovercap {
+.hovercap {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -69,7 +53,6 @@ body{
   color: white;
 }
 
-
 .hovercap {
   visibility: none;
   opacity: 0;
@@ -81,15 +64,12 @@ body{
   opacity: 1;
 }
 
-
-
 /* product cards */
 
-#category{
+#category {
   justify-content: center;
   padding: 4px;
 }
-
 
 .cards-wrapper-cat {
   display: flex;
@@ -103,11 +83,9 @@ body{
   border-radius: 12px;
   margin-left: 1em;
   transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
-  0.3s box-shadow,
-  0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
-
-
 
 #retro-card {
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
@@ -136,32 +114,37 @@ body{
 .card-body {
   color: #ffff;
   background-color: var(--slate);
+  text-align: center;
 }
 
 .c-btn {
   background-color: var(--yellow);
   padding: 10px;
-  margin-right: 5px;
+  margin-right: .5vw;
+  margin-bottom: 10px;
+  color: white;
   font-weight: 10px;
+  border: none;
   border-radius: 12px;
 }
 
 /* mobile version */
 @media screen and (min-width: 568px) {
-
-  #cat-card{
+  #cat-card {
     max-width: 40vw;
-  }  
+  }
 
-  #cat-img-text{
+  #cat-img-text {
     color: white;
-    position:absolute;
-    bottom: 0; 
+    position: absolute;
+    bottom: 0;
     left: 16vw;
     font-size: 1vw;
-  }  
+  }
 
-  #mobile-header, #mobile-carousel,#mobile-retro {
+  #mobile-header,
+  #mobile-carousel,
+  #mobile-retro {
     display: none;
   }
 
@@ -187,27 +170,27 @@ body{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
   }
 
-  #cat-card:hover{
+  #cat-card:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
   }
-  
 }
 @media screen and (max-width: 567px) {
-
-  #cat-card{
+  #cat-card {
     max-width: 45vw;
-  }  
+  }
 
-  #cat-img-text{
+  #cat-img-text {
     color: white;
-    position:absolute;
-    bottom: 0; 
+    position: absolute;
+    bottom: 0;
     left: 10vw;
     font-size: 3vw;
-  }  
+  }
 
-  #trending, #retro, #web-header {
+  #trending,
+  #retro,
+  #web-header {
     display: none;
   }
 
@@ -217,20 +200,19 @@ body{
     margin-top: 5vh;
     margin-bottom: 10vh;
   }
-  
-  .mob-retro-head{
-    position:absolute;
+
+  .mob-retro-head {
+    position: absolute;
     font-size: 2vh;
-    bottom: 47vh; 
+    bottom: 47vh;
     left: 10vw;
     color: #ffff;
-    }
-  .mob-retro-buttons{
-    position:absolute;
-    bottom: 11px; 
+  }
+  .mob-retro-buttons {
+    position: absolute;
+    bottom: 11px;
     left: 75px;
   }
-
 }
 
 /* buttons */
