@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../services/app-services.service';
 import { SearchMessageService } from 'src/app/Services/search-message.service';

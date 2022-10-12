@@ -3,8 +3,7 @@
     <mat-card
       class="example-card prodCard"
       *ngIf="
-        searchTerm === '' ||
-        item.productName.toLowerCase().includes(searchTerm)
+        searchTerm === '' || item.productName.toLowerCase().includes(searchTerm)
       "
     >
       <mat-card-header>
