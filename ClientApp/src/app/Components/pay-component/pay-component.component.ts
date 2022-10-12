@@ -2,10 +2,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
 import { AppServiceService } from 'src/app/Services/app-services.service';
+import { AuthorizeService } from '../../../api-authorization/authorize.service';
 import { OrdersService } from 'src/app/Services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { map, Observable } from 'rxjs';
+import { first } from 'rxjs';
 
 /*
  * Notes:
@@ -54,14 +57,36 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService) { }
+  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
-  ngOnInit(): void {
-    
-    console.log(this.cart2);
+  userID?: any;
+  actualID: any = "";
 
-    window.paypal.Buttons(
+
+  //ON INIT HERE
+
+  ngOnInit(): void {
+    this.addCart();
+    this.showCart();
+    (async () => {
+      await delay(2000);
+      this.updateSubtotal();
+    })();
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    this.authorizeService.getUser().subscribe(users => { this.userID = users; });
+    (async () => {
+      await delay(2000);
+      console.log(this.userID.sub);
+    })();
+
+    
+    
+
+    /* aaron's paypal stuff
+     * window.paypal.Buttons(
       {
         style: {
           layout: 'vertical',
@@ -98,13 +123,15 @@ export class PayComponentComponent implements OnInit {
           //});
         }
       }
-    ).render(this.paypalRef.nativeElement);
+    ).render(this.paypalRef.nativeElement);*/
   }
 
+  //END OF ONINIT
   addCart() {
     localStorage.setItem("Cart", JSON.stringify(this.cart));
   }
   subtotal = 0;
+
   showCart() {
     console.log("it works");
     let data: any = localStorage.getItem('Cart');
@@ -112,16 +139,19 @@ export class PayComponentComponent implements OnInit {
     for (let x in this.cartNum) {
       this.getProductById(this.cartNum[x]);
     }
+  }
+
+  updateSubtotal() {
     for (let x in this.cart2) {
       this.subtotal += parseFloat(this.cart2[x].productPrice);
-      
+      this.subtotal = parseFloat(this.subtotal.toFixed(2));
       console.log(this.subtotal);
     }
   }
 
   clearCart() {
     localStorage.clear();
-    this.router.navigate(['/product']);
+    this.router.navigate(['/paySuccess']);
   }
   product: Product | undefined;
 
@@ -131,6 +161,12 @@ export class PayComponentComponent implements OnInit {
 
   postToOrders(order: any) {
     this.orderService.addOrder(order);
+  }
+
+  confirmCheckout() {
+    console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
+    this.clearCart();
+
   }
 
 }
