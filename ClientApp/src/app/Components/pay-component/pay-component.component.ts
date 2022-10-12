@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
-
+import { AppServiceService } from 'src/app/Services/app-services.service';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
@@ -100,8 +101,9 @@ const ELEMENT_DATA: product[] = [
 export class PayComponentComponent implements OnInit {
 
   cart2: any = [];
-
-  cart: any = [{
+  cartNum: any = [];
+  cart: string[] = ['11','41','42','124','126','51'];
+    /*any = [{
     productID: 10001,
     productName: "Samsung 70\" TV",
     productCategory: "Computers & Displays",
@@ -159,7 +161,7 @@ export class PayComponentComponent implements OnInit {
     productImgUrl: "https://target.scene7.com/is/image/Target/GUEST_c47a3d6d-89aa-4929-91eb-17e84dc587c0?qlt=85&fmt=webp&hei=325&wid=325",
     productPrice: "399.99",
     productQty: 4
-  }];
+  }];*/
 
 
   data: any = localStorage.getItem('Cart');
@@ -171,7 +173,7 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   ngOnInit(): void {
@@ -214,8 +216,10 @@ export class PayComponentComponent implements OnInit {
   showCart() {
     console.log("it works");
     let data: any = localStorage.getItem('Cart');
-    this.cart2 = JSON.parse(data);
-    console.log(this.cart2);
+    this.cartNum = JSON.parse(data);
+    for (let x in this.cartNum) {
+      this.getProductById(this.cartNum[x]);
+    }
     for (let x in this.cart2) {
       this.subtotal += parseFloat(this.cart2[x].productPrice);
       
@@ -226,7 +230,11 @@ export class PayComponentComponent implements OnInit {
   clearCart() {
     localStorage.clear();
   }
+  product: Product | undefined;
 
+  getProductById(id: string) {
+    this.service.getProductById(id).subscribe((data: Product) => this.cart2.push(data));
+  }
 
 }
 
