@@ -1,21 +1,35 @@
 <div class="cardHolder">
-
-  <div  *ngFor="let item of Products">
-    <mat-card class="example-card prodCard">
+  <div *ngFor="let item of Products">
+    <mat-card
+      class="example-card prodCard"
+      *ngIf="
+        searchTerm === '' ||
+        item.productName.toLowerCase().includes(searchTerm)
+      "
+    >
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title><a [routerLink]="['/pdetails', item.productId]">{{item.productName}}</a></mat-card-title>
-        <mat-card-subtitle>{{item.productCategory}}</mat-card-subtitle>
+        <mat-card-title
+          ><a [routerLink]="['/pdetails', item.productId]">{{
+            item.productName
+          }}</a></mat-card-title
+        >
+        <mat-card-subtitle>{{ item.productCategory }}</mat-card-subtitle>
       </mat-card-header>
       <a [routerLink]="['/pdetails', item.productId]">
-      <img style="padding-top:20px" mat-card-image src={{item.productImgUrl}} alt="Photo of a Shiba Inu">
+        <img
+          style="padding-top: 20px"
+          mat-card-image
+          src="{{ item.productImgUrl }}"
+          alt="Photo of a Shiba Inu"
+        />
       </a>
       <mat-card-content>
         <p>
-          {{item.productDescription}}
+          {{ item.productDescription }}
         </p>
         <p>
-          {{item.productPrice}}
+          {{ item.productPrice }}
         </p>
       </mat-card-content>
       <mat-card-actions>

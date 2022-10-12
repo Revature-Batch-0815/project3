@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 //angular materials
 // Material Form Controls
@@ -71,8 +72,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 //MatListModule,MatIconModule,
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,12 +79,13 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    SearchBarComponent,
     CreateProductComponent,
     EditProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
     PayComponentComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -135,22 +135,35 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
- 
+
     MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pedit', component: EditProductComponent },
-      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
+      {
+        path: 'view-orders',
+        component: ViewOrdersComponent,
+        canActivate: [AuthorizeGuard],
+      },
       { path: 'counter', component: CounterComponent },
-      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      {
+        path: 'view-orders',
+        component: ViewOrdersComponent,
+        canActivate: [AuthorizeGuard],
+      },
+      {
+        path: 'fetch-data',
+        component: FetchDataComponent,
+        canActivate: [AuthorizeGuard],
+      },
       { path: 'pay', component: PayComponentComponent },
-      { path: 'pdetails', component:ProductDetailsComponent },
-      { path:'pdetails/:id', component:ProductDetailsComponent },
-      { path: 'product', component: ProductListComponent },
+      { path: 'pdetails', component: ProductDetailsComponent },
 
+      { path: 'pdetails/:id', component: ProductDetailsComponent },
+
+      { path: 'product', component: ProductListComponent },
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -187,10 +200,11 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    MatTableModule,
   ],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
