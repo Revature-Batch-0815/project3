@@ -69,6 +69,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatTableModule } from '@angular/material/table';
+import { PaySuccessComponent } from './Components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
 
@@ -149,6 +150,7 @@ import { MatTableModule } from '@angular/material/table';
       { path: 'product', component: ProductListComponent },
       { path: 'pcreate', component: CreateProductComponent },
       { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'paySuccess', component: PaySuccessComponent }
 
     ]),
     BrowserAnimationsModule

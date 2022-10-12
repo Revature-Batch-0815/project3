@@ -1,73 +1,82 @@
 
+<mat-card class="example-card" style="margin:20px ;text-align: center;">
+  <button (click)="addCart()">Save Data</button>
+  <button (click)="showCart()">Show Data</button>
+  <button (click)="updateSubtotal()">Update Subtotal</button>
+  <div style="display: flex; ">
+    <div class="cardHolder">
 
-<button (click)="addCart()">Save Data</button>
-<button (click)="showCart()">Show Data</button>
+      <div *ngFor="let item of cart2">
+        <mat-card class="example-card prodCard">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{item.productName}}</mat-card-title>
+            <mat-card-subtitle>{{item.productCategory}}</mat-card-subtitle>
 
-<div style="display: flex;">
-  <div class="cardHolder">
-
-    <div *ngFor="let item of cart2">
-      <mat-card class="example-card prodCard">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.productName}}</mat-card-title>
-          <mat-card-subtitle>{{item.productCategory}}</mat-card-subtitle>
-
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            {{item.productDescription}}
-          </p>
-          <p>
-            {{item.productPrice|currency:'USD'}}
-          </p>
-          <button>Remove</button>
-        </mat-card-content>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{item.productDescription}}
+            </p>
+            <p>
+              {{item.productPrice|currency:'USD'}}
+            </p>
+            <button>Remove</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div style="width: 50%; margin: 0px 20px 0px 20px;">
+      <mat-card class="example-card" style="margin:20px ;text-align: center;">
+        <h1>Your total: ${{subtotal}}</h1>
+        <button (click)="confirmCheckout()">Confirm Purchase</button>
       </mat-card>
     </div>
   </div>
-  <div style="width: 50%; margin: 0px 20px 0px 20px;">
-    <mat-stepper #stepper>
-      <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Fill out your name</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-          </mat-form-field>
+</mat-card>
+
+
+
+  <!--<div style="width: 50%; margin: 0px 20px 0px 20px;">
+      <mat-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <p>Go to a different step to see the error state</p>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                     required>
+            </mat-form-field>
+            <div>
+              <p>Go to a different step to see the error state</p>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Pay</ng-template>
+          <div #paypalRef></div>
+          <button (click)="clearCart()">Finished</button>
           <div>
-            <p>Go to a different step to see the error state</p>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Fill out your address</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                   required>
-          </mat-form-field>
-          <div>
-            <p>Go to a different step to see the error state</p>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
           </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Pay</ng-template>
-        <div #paypalRef></div>
-        <button (click)="clearCart()">Finished</button>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </mat-step>
-    </mat-stepper>
-    
-  </div>
-</div>
+        </mat-step>
+      </mat-stepper>
 
-
+    </div>
+  </div>-->
