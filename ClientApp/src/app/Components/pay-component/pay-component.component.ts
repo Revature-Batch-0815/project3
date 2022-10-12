@@ -69,18 +69,19 @@ export class PayComponentComponent implements OnInit {
   ngOnInit(): void {
     this.addCart();
     this.showCart();
+    this.authorizeService.getUser().subscribe(users => { this.userID = users; });
     (async () => {
-      await delay(2000);
+      await delay(3000);
       this.updateSubtotal();
     })();
     function delay(ms: number) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-    this.authorizeService.getUser().subscribe(users => { this.userID = users; });
-    (async () => {
+
+    /*(async () => {
       await delay(2000);
       console.log(this.userID.sub);
-    })();
+    })();*/
 
     
     
@@ -165,8 +166,46 @@ export class PayComponentComponent implements OnInit {
 
   confirmCheckout() {
     console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
-    this.clearCart();
+    var theOrder;
+    var items: any = [];
+    var shoppingCart: string = this.cart2;
+    items[0] = this.subtotal;
+    items[1] = this.userID.sub;
+    items[2] = shoppingCart;
+    //theOrder.put("orderAmount", this.subtotal);
+    var fakeOrder = [
+      {
+        "productId": 42,
+        "orderAmount": 299.99,
+        "orderQty": 1,
+        "orderStatus": "Received"
+      }
 
+    ];
+    items[3] = fakeOrder;
+    theOrder = {
+      "orderAmount": items[0],
+      "userId": items[1],
+      "orderDetails": items[3]
+    }
+    console.log(JSON.stringify(theOrder));
+    this.postToOrders(items);
+/*    export class Order {
+      orderAmount = "";
+      userId = "";
+      orderDetails = [];
+    }
+*/
+
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    (async () => {
+      await delay(2000);
+      this.clearCart();
+    })();
+
+   
   }
 
 }
