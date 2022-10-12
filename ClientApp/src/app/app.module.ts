@@ -70,6 +70,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatTableModule } from '@angular/material/table';
+import { SearchMessageService } from './Services/search-message.service';
 //MatListModule,MatIconModule,
 
 @NgModule({
@@ -204,6 +205,7 @@ import { MatTableModule } from '@angular/material/table';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    SearchMessageService
   ],
   bootstrap: [AppComponent],
 })
