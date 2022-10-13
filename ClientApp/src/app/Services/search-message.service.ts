@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchMessageService {
 
-  private seachMessageSource = new Subject<string>();
+  private seachMessageSource = new BehaviorSubject<string>("i");
   public currentMessage = this.seachMessageSource.asObservable();
 
   constructor() { }
