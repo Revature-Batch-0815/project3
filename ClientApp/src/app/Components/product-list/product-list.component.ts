@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../Services/app-services.service';
-import { searchInputService } from 'src/app/Services/search-input.service';
+import { SearchMessageService } from 'src/app/Services/search-message.service';
+
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-list',
@@ -10,19 +12,18 @@ import { searchInputService } from 'src/app/Services/search-input.service';
 })
 export class ProductListComponent implements OnInit {
   Products: Product[] = [];
+  searchTerm: string = 'i';
 
   constructor(
     private productService: AppServiceService,
-    private _searchInputService: searchInputService
-  ) {
-    _searchInputService.changeEmitted$.subscribe((text) => {
-      console.log(text);
-    });
-  }
+    private searchMessage: SearchMessageService
+  ) {}
 
   ngOnInit(): void {
+    this.searchMessage.changeMessage(this.searchTerm);
+    this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
-      .getProducts()
+      .searchProducts(this.searchTerm)
       .subscribe((results: Product[]) => (this.Products = results));
   }
 }
