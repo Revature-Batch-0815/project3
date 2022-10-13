@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - project3</title>
+
+
+    <link rel="stylesheet" href="/Identity/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/Identity/css/site.css">
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    revTech
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-app" viewBox="0 0 16 16">
+                        <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z" />
+                    </svg>
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse"
+                        aria-label="Toggle navigation"
+                        [attr.aria-expanded]="isExpanded"
+                        (click)="toggle()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/Identity/Account/Register?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dproject3%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44424%252Fauthentication%252Flogin-callback%26response_type%3Dcode%26scope%3Dproject3API%2520openid%2520profile%26state%3D760df1fd52a74bdb9e02c45dda9a865d%26code_challenge%3D5hPajWn726MxAx3EMvlk7TRthXssqZDCMGwP9__uZJ0%26code_challenge_method%3DS256%26response_mode%3Dquery">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/Identity/Account/Login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dproject3%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44424%252Fauthentication%252Flogin-callback%26response_type%3Dcode%26scope%3Dproject3API%2520openid%2520profile%26state%3D760df1fd52a74bdb9e02c45dda9a865d%26code_challenge%3D5hPajWn726MxAx3EMvlk7TRthXssqZDCMGwP9__uZJ0%26code_challenge_method%3DS256%26response_mode%3Dquery">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <main role="main" class="pb-1">
+
+            <h1>Register</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <form id="registerForm" method="post" action="/Identity/Account/Register?returnUrl=%2Fauthentication%2Flogin" novalidate="novalidate">
+                        <h2>Create a new account.</h2>
+                        <hr>
+
+                        <div class="form-floating">
+                            <input class="form-control" autocomplete="username" aria-required="true" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="">
+                            <label for="Input_Email">Email</label>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" autocomplete="new-password" aria-required="true" type="password" data-val="true" data-val-length="The Password must be at least 6 and at max 100 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Input_Password" maxlength="100" name="Input.Password">
+                            <label for="Input_Password">Password</label>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" autocomplete="new-password" aria-required="true" type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="Input_ConfirmPassword" name="Input.ConfirmPassword">
+                            <label for="Input_ConfirmPassword">Confirm password</label>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword" data-valmsg-replace="true"></span>
+                        </div>
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8EIbChbWd0RHt6IQKyEL8LwgnfRVLg_hZCJHX8LQRnDyWMg9BJ8oYNZF5dw4Ml6C1p8Xy2vbOn3sNHdNVU27l_H_Tsr27qm7JVACOBUy-qpJ_oIa_lDwUyZn7hAK_eFFtG_TQVt_0-WuW5TWSAoifL0">
+                    </form>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+    <section class="footer">
+        <footer class="p-2 bg-dark text-white text-center position-relative">
+            <div class="container">
+                <p>Copyright &copy; 2022 Rev Tech</p>
+
+                <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                    <i class="bi bi-arrow-up-circle text-light h1"></i>
+                </a>
+            </div>
+        </footer>
+    </section>
+
+    <script src="/Identity/lib/jquery/dist/jquery.js"></script>
+    <script src="/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/Identity/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+
+
+
+
+
+    <script src="/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+
+
+
+
+    <!-- Visual Studio Browser Link -->
+    <script type="text/javascript" src="/_vs/browserLink" async="async" id="__browserLink_initializationData" data-requestid="126aca8176fd41b89c8c77bea42636e4" data-requestmappingfromserver="false" data-connecturl="http://localhost:64884/be5635058c4942628256c25d5d02692c/browserLink"></script>
+    <!-- End Browser Link -->
+
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
