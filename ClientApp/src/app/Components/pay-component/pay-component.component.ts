@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
-import { AppServiceService } from 'src/app/Services/app-services.service';
+import { AppServiceService } from 'src/app/services/app-services.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
-import { OrdersService } from 'src/app/Services/orders.service';
+import { OrdersService } from 'src/app/services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -70,6 +70,7 @@ export class PayComponentComponent implements OnInit {
     this.addCart();
     this.showCart();
 
+
     this.count = 0;
     this.authorizeService.getUser().subscribe(users => { this.userID = users; });
     (async () => {
@@ -79,6 +80,24 @@ export class PayComponentComponent implements OnInit {
     
     
     
+
+    /*this.authorizeService.getUser().subscribe(users => { this.userID = users; });
+    (async () => {
+      await delay(3000);
+      this.updateSubtotal();
+    })();
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    /*(async () => {
+      await delay(2000);
+      console.log(this.userID.sub);
+    })();*/
+
+  //data: any = localStorage.getItem('Cart');
+  //dataSource = JSON.parse(this.data);*/
+
 
     /* aaron's paypal stuff
      * window.paypal.Buttons(
@@ -162,7 +181,8 @@ export class PayComponentComponent implements OnInit {
 
   clearCart() {
     localStorage.clear();
-    this.router.navigate(['/paySuccess']);
+    this.router.navigate(['/product']);
+    //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
 
@@ -195,6 +215,48 @@ export class PayComponentComponent implements OnInit {
       console.log('post request to orders for $', this.subtotal, 'from ', this.userID.sub);
       this.clearCart();
     })();
+
+    /*console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
+    var theOrder;
+    var items: any = [];
+    var shoppingCart: string = this.cart2;
+    items[0] = this.subtotal;
+    items[1] = this.userID.sub;
+    items[2] = shoppingCart;
+    //theOrder.put("orderAmount", this.subtotal);
+    var fakeOrder = [
+      {
+        "productId": 42,
+        "orderAmount": 299.99,
+        "orderQty": 1,
+        "orderStatus": "Received"
+      }
+
+    ];
+    items[3] = fakeOrder;
+    theOrder = {
+      "orderAmount": items[0],
+      "userId": items[1],
+      "orderDetails": items[3]
+    }
+    console.log(JSON.stringify(theOrder));
+    this.postToOrders(items);
+/*    export class Order {
+      orderAmount = "";
+      userId = "";
+      orderDetails = [];
+    }
+*/
+
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    (async () => {
+      await delay(2000);
+      this.clearCart();
+    })();*/
+
+   
   }
 
   
