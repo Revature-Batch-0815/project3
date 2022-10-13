@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { AppServiceService } from '../Services/app-services.service';
+import { AppServiceService } from '../services/app-services.service';
 
 @Component({
   selector: 'app-edit-product',

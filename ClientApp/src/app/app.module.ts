@@ -61,7 +61,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { PayComponentComponent } from './components/pay-component/pay-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -71,7 +71,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatTableModule } from '@angular/material/table';
-import { PaySuccessComponent } from './Components/pay-success/pay-success.component';
+import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
 
