@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
@@ -68,9 +69,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-
 import { MatTableModule } from '@angular/material/table';
+
 import { SearchMessageService } from './services/search-message.service';
+import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
 @NgModule({
@@ -87,6 +89,8 @@ import { SearchMessageService } from './services/search-message.service';
     ProductDetailsComponent,
     PayComponentComponent,
     ViewOrdersComponent,
+    FetchDataComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -157,12 +161,15 @@ import { SearchMessageService } from './services/search-message.service';
         component: FetchDataComponent,
         canActivate: [AuthorizeGuard],
       },
+      { path: 'contact-us', component: ContactUsComponent },
       { path: 'pay', component: PayComponentComponent },
       { path: 'pdetails', component: ProductDetailsComponent },
-
       { path: 'pdetails/:id', component: ProductDetailsComponent },
-
       { path: 'product', component: ProductListComponent },
+      { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'pcreate', component: CreateProductComponent },
+      { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'paySuccess', component: PaySuccessComponent }
     ]),
     BrowserAnimationsModule,
   ],

@@ -1,47 +1,63 @@
 
-<mat-card>
+<mat-card class="example-card" style="margin:10px ;text-align: center;">
   <mat-card-title> Update Product </mat-card-title>
   <mat-card-content style="padding-top:20px">
-    <form>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Product Name</mat-label>
-          <input matInput placeholder="Name" formControlName="name">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Category</mat-label>
-          <input matInput placeholder="Category" formControlName="category">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Description</mat-label>
-          <input matInput placeholder="Description" formControlName="description">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Image URL</mat-label>
-          <input matInput placeholder="Image URL" formControlName="imageurl">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Price</mat-label>
-          <input matInput placeholder="Price" formControlName="price">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Quantity</mat-label>
-          <input matInput placeholder="Quantity" formControlName="quantity">
-        </mat-form-field>
-      </p>
-      <p>
-        <button mat-raised-button color="primary">Update User</button>
-      </p>
-    </form>
+    <div *ngIf="dataLoaded">
+      <form [formGroup]="editProductForm" (submit)="updateProduct()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error *ngIf="editProductForm.controls['name'].errors && editProductForm.controls['name'].hasError('required')"> Name is required </mat-error>
+            <mat-error *ngIf="editProductForm.controls['name'].errors && editProductForm.controls['name'].hasError('minlength')"> Name must be 5 characters </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <input matInput placeholder="Category" formControlName="category">
+            <mat-error *ngIf="editProductForm.controls['category'].errors && editProductForm.controls['category'].hasError('required')"> Category is required </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput
+                      placeholder="Description"
+                      formControlName="description"
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="10"></textarea>
+            <mat-error *ngIf="editProductForm.controls['description'].errors && editProductForm.controls['description'].hasError('required')"> Description is required </mat-error>
+            <mat-error *ngIf="editProductForm.controls['description'].errors && editProductForm.controls['description'].hasError('minlength')"> Description must be 5 characters </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Image URL</mat-label>
+            <input matInput placeholder="Image URL" formControlName="imageurl">
+            <mat-error *ngIf="editProductForm.controls['imageurl'].errors && editProductForm.controls['imageurl'].hasError('required')"> Image URL is required </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" formControlName="price">
+            <mat-error *ngIf="editProductForm.controls['price'].errors && editProductForm.controls['price'].hasError('required')"> Price is required </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput placeholder="Quantity" formControlName="quantity">
+            <mat-error *ngIf="editProductForm.controls['quantity'].errors && editProductForm.controls['quantity'].hasError('required')"> Quantity is required </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <button mat-raised-button color="primary" [disabled]="!editProductForm.valid">Update Product</button>
+        </p>
+      </form>
+    </div>
   </mat-card-content>
 </mat-card>

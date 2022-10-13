@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace project3.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -61,14 +61,6 @@ namespace project3.Controllers
                 return NotFound();
             }
         }
-        /*
-                [HttpGet]
-                public ActionResult OrderDetails()
-                {
-                    UserOrders order = new UserOrders();
-                    var user = User.Identity.Name;
-                    return (ActionResult)order.GetUserOrders(user);
-                }*/
 
         // GET: api/Orders/5
         [HttpGet("{id}")]

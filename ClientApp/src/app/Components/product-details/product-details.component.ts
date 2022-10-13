@@ -21,8 +21,6 @@ export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
 
   getProductById(id: string) {
-    this.service
-      .getProductById(id)
-      .subscribe((data: Product) => (this.product = data));
+    this.service.getProductById(id).subscribe((data: Product) => this.product = data);
   }
 }
