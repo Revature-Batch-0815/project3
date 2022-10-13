@@ -74,8 +74,6 @@ import { MatTableModule } from '@angular/material/table';
 import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +81,7 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    SearchBarComponent,
     CreateProductComponent,
     EditProductComponent,
     ProductListComponent,
@@ -140,12 +139,16 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
- 
+
     MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pedit', component: EditProductComponent },
-      { path: 'view-orders', component: ViewOrdersComponent, canActivate: [AuthorizeGuard] },
+      {
+        path: 'view-orders',
+        component: ViewOrdersComponent,
+        canActivate: [AuthorizeGuard],
+      },
       { path: 'counter', component: CounterComponent },
       {
         path: 'view-orders',
@@ -166,7 +169,6 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
       { path: 'pcreate', component: CreateProductComponent },
       { path: 'pedit/:id', component: EditProductComponent },
       { path: 'paySuccess', component: PaySuccessComponent }
-
     ]),
     BrowserAnimationsModule,
   ],
@@ -205,10 +207,11 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    MatTableModule,
   ],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

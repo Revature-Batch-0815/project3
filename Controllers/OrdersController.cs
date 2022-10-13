@@ -32,7 +32,6 @@ namespace project3.Controllers
         public async Task<ActionResult<IEnumerable<UserOrders>>> GetOrders()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
             try
             {
                 return await (from a in _context.Orders
@@ -61,7 +60,6 @@ namespace project3.Controllers
                 Debug.WriteLine(e);
                 return NotFound();
             }
-            
         }
 
         // GET: api/Orders/5

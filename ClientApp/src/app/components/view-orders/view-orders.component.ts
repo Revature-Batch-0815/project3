@@ -16,14 +16,11 @@ export class ViewOrdersComponent implements OnInit {
 
   public orders: Order[] = [];
 
-  //The Code Below was commented out and replaced with Jacob's code from his branch.
   //_makeApiCall: OrdersService;
-  /*constructor(_apicallREF: OrdersService) {
-    this._makeApiCall = _apicallREF;
-  }
-*/
 
-  //Below is the code from Jacob's order-details-jacob branch. A huge thanks goes out to him. 
+  //constructor(private authorizeService: AuthorizeService) {
+  //  this._makeApiCall = _apicallREF;
+  //}
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
     http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
       this.orders = result;
