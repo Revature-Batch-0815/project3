@@ -25,7 +25,9 @@ namespace project3.Controllers
                 if (!string.IsNullOrEmpty(productSearchTerm))
                 {
                     products = products.Where(e => e.ProductName.Contains(productSearchTerm)
-                        || e.ProductDescription.Contains(productSearchTerm));
+                        || e.ProductDescription.Contains(productSearchTerm)
+                        || e.ProductCategory.Contains(productSearchTerm));
+                        
                 }
                var result =  await products.ToListAsync();
 
