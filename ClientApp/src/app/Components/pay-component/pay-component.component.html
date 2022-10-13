@@ -1,8 +1,6 @@
 
 <mat-card class="example-card" style="margin:20px ;text-align: center;">
-  <button (click)="addCart()">Save Data</button>
-  <button (click)="showCart()">Show Data</button>
-  <button (click)="updateSubtotal()">Update Subtotal</button>
+  <button (click)="showCart()">Refresh Data</button>
   <div style="display: flex; ">
     <div class="cardHolder">
 
@@ -21,7 +19,7 @@
             <p>
               {{item.productPrice|currency:'USD'}}
             </p>
-            <button>Remove</button>
+            <button (click) = "removeItem(item.productId)">Remove</button>
           </mat-card-content>
         </mat-card>
       </div>
@@ -29,7 +27,7 @@
     <div style="width: 50%; margin: 0px 20px 0px 20px;">
       <mat-card class="example-card" style="margin:20px ;text-align: center;">
         <h1>Your total: ${{subtotal}}</h1>
-        <button (click)="confirmCheckout()">Confirm Purchase</button>
+        <button id="confirm" (click)="confirmCheckout()">Confirm Purchase</button>
       </mat-card>
     </div>
   </div>
