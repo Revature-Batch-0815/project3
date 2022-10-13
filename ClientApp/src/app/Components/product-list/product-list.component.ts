@@ -27,14 +27,14 @@ export class ProductListComponent implements OnInit {
       .subscribe((results: Product[]) => {
         this.Products = results;
         console.log('from productList:', results);
-        this.getAllProducts()
+        this.getAllProducts();
       });
-      this.getAllProducts;
+    this.getAllProducts;
   }
-  getAllProducts(){
-      this.productService.getProducts().subscribe((results: Product[]) => {
-        this.Products = results;
-        console.log('from productList:', results);
-    }
+  getAllProducts() {
+    this.productService.getProducts().subscribe((results: Product[]) => {
+      this.Products = results;
+      console.log('from productList:', results);
+    });
   }
 }
