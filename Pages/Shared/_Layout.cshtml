@@ -20,8 +20,16 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/Identity/css/site.css" asp-append-version="true" />
     </environment>
+    <style>
+        .btn, .btn:hover {
+            background-color: #fca311;
+        }
+        .btn:active, .btn:focus{
+            background-color: #c37400;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color:#e5e5e5;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
@@ -65,7 +73,7 @@
             @RenderBody()
         </main>
     </div>
-    <section class="footer">
+    <section class="footer" style="overflow:hidden;">
         <footer class="p-2 bg-dark text-white text-center position-relative">
             <div>
                 <p>Copyright &copy; 2022 Rev Tech</p>
