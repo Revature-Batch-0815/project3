@@ -71,6 +71,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatTableModule } from '@angular/material/table';
+import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
 @NgModule({
@@ -87,6 +88,8 @@ import { MatTableModule } from '@angular/material/table';
     ProductDetailsComponent,
     PayComponentComponent,
     ViewOrdersComponent,
+    FetchDataComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -162,6 +165,10 @@ import { MatTableModule } from '@angular/material/table';
       { path: 'pdetails', component: ProductDetailsComponent },
       { path: 'pdetails/:id', component: ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
+      { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'pcreate', component: CreateProductComponent },
+      { path: 'pedit/:id', component: EditProductComponent },
+      { path: 'paySuccess', component: PaySuccessComponent }
     ]),
     BrowserAnimationsModule,
   ],

@@ -1,0 +1,10 @@
+.cardHolder{
+    width: 50%;
+    margin-left: 20px;
+}
+
+mat-stepper {
+  
+
+  max-height: 500px;
+}

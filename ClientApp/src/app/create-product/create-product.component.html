@@ -1,1 +1,62 @@
-<p>create-product works!</p>
+
+
+<mat-card class="example-card" style="margin:10px ;text-align: center;">
+  <mat-card-title> Create Product </mat-card-title>
+  <mat-card-content style="padding-top:20px">
+    <form [formGroup]="createProductForm" (submit)="addProductsApi()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Product Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name">
+          <mat-error *ngIf="createProductForm.controls['name'].errors && createProductForm.controls['name'].hasError('required')"> Name is required </mat-error>
+          <mat-error *ngIf="createProductForm.controls['name'].errors && createProductForm.controls['name'].hasError('minlength')"> Name must be 5 characters </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="Category" formControlName="category">
+          <mat-error *ngIf="createProductForm.controls['category'].errors && createProductForm.controls['category'].hasError('required')"> Category is required </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput
+                    placeholder="Description"
+                    formControlName="description"
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="10"></textarea>
+          <mat-error *ngIf="createProductForm.controls['description'].errors && createProductForm.controls['description'].hasError('required')"> Description is required </mat-error>
+          <mat-error *ngIf="createProductForm.controls['description'].errors && createProductForm.controls['description'].hasError('minlength')"> Description must be 5 characters </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Image URL</mat-label>
+          <input matInput placeholder="Image URL" formControlName="imageurl">
+          <mat-error *ngIf="createProductForm.controls['imageurl'].errors && createProductForm.controls['imageurl'].hasError('required')"> Image URL is required </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Price" formControlName="price">
+          <mat-error *ngIf="createProductForm.controls['price'].errors && createProductForm.controls['price'].hasError('required')"> Price is required </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Quantity</mat-label>
+          <input matInput placeholder="Quantity" formControlName="quantity">
+          <mat-error *ngIf="createProductForm.controls['quantity'].errors && createProductForm.controls['quantity'].hasError('required')"> Quantity is required </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button color="primary" [disabled]="!createProductForm.valid">Create Product</button>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>
