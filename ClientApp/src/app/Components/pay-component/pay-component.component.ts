@@ -246,7 +246,7 @@ export class PayComponentComponent implements OnInit {
       userId = "";
       orderDetails = [];
     }
-*/
+
 
     function delay(ms: number) {
       return new Promise(resolve => setTimeout(resolve, ms));
