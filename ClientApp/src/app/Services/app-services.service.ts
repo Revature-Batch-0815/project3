@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs';
@@ -12,22 +12,23 @@ import { Product } from 'src/products.model';
 })
 export class AppServiceService {
   private url = 'api/products';
-  private baseUrl = environment.apiUrl;
+  //private baseUrl = environment.apiUrl;
+  @Inject('BASE_API_URL') private baseUrl1: string = "";
+
   constructor(private http: HttpClient) {}
 
   /**
    * getProducts
    */
   public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}/${this.url}`);
+    return this.http.get<Product[]>(this.baseUrl1 + this.url);
   }
 
   /**
    * searchProducts
    */
   public searchProducts(productSearchTerm: string): Observable<Product[]> {
-    return this.http.get<Product[]>(
-      `${environment.apiUrl}/${this.url}/search?productSearchTerm=${productSearchTerm}`
+    return this.http.get<Product[]>(this.baseUrl1 + this.url + `/search?productSearchTerm=${productSearchTerm}`
     );
   }
 
@@ -36,7 +37,7 @@ export class AppServiceService {
    */
   public addProductsApi(addProd: Product): Observable<Product> {
     return this.http.post<Product>(
-      `${environment.apiUrl}/${this.url}`,
+      this.baseUrl1 + this.url,
       addProd
     );
   }
@@ -45,7 +46,7 @@ export class AppServiceService {
    * getProductById
    */
   public getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.apiUrl}/${this.url}/${id}`);
+    return this.http.get<Product>(this.baseUrl1 + this.url + `/${id}`);
   }
 
   /**
@@ -56,7 +57,7 @@ export class AppServiceService {
     updateProduct: Product
   ): Observable<Product> {
     return this.http.put<Product>(
-      `${environment.apiUrl}/${this.url}/${id}`,
+      this.baseUrl1 + this.url + `/${id}`,
       updateProduct
     );
   }
@@ -65,6 +66,6 @@ export class AppServiceService {
    * deleteProduct
    */
   public deleteProduct(id: string): Observable<Product> {
-    return this.http.delete<Product>(`${environment.apiUrl}/${this.url}/${id}`);
+    return this.http.delete<Product>(this.baseUrl1 + this.url + `/${id}`);
   }
 }
