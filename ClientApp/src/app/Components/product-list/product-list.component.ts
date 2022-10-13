@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
         console.log('from productList:', results);
         this.getAllProducts();
       });
-    this.getAllProducts;
+    this.getAllProducts();
   }
   getAllProducts() {
     this.productService.getProducts().subscribe((results: Product[]) => {
