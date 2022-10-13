@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../services/app-services.service';
+import { SearchMessageService } from 'src/app/services/search-message.service';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -11,13 +12,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductListComponent implements OnInit {
   Products: Product[] = [];
-  searchTerm: string = '';
+  searchTerm: string = 'i';
 
-  constructor(private productService: AppServiceService) {}
+  constructor(
+    private productService: AppServiceService,
+    private searchMessage: SearchMessageService
+  ) {}
 
   ngOnInit(): void {
+    this.productService.getProducts().subscribe((results: Product[]) => {
+      this.Products = results;
+      console.log('from productList:', results);
+    });
+    this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
-      .getProducts()
-      .subscribe((results: Product[]) => (this.Products = results));
+      .searchProducts(this.searchTerm)
+      .subscribe((results: Product[]) => {
+        this.Products = results;
+        console.log('from productList:', results);
+      });
   }
 }
