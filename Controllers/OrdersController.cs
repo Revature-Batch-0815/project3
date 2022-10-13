@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project3.Models.EF;
+using NuGet.Protocol.Plugins;
+using NuGet.Protocol;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 
 namespace project3.Controllers
 {
@@ -18,11 +22,6 @@ namespace project3.Controllers
     {
         private readonly P3_shoppingDBContext _context = new P3_shoppingDBContext();
 
-        //public OrdersController(P3_shoppingDBContext context)
-        //{
-        //    _context = context;
-        //}
-
         // GET: api/Orders
         /*    [HttpGet]
             public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
@@ -30,27 +29,48 @@ namespace project3.Controllers
                 return await _context.Orders.ToListAsync();
             }*/
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<UserOrders>>> GetOrders()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await _context.Orders.Where(o => o.UserId.ToUpper() == userId.ToUpper()).ToListAsync();
+            try
+            {
+                return await (from a in _context.Orders
+                              join b in _context.AspNetUsers
+                              on a.UserId equals b.Id
+                              join c in _context.OrderDetails
+                              on a.OrdersId equals c.OrderId
+                              join d in _context.Products
+                              on c.ProductId equals d.ProductId
+                              where a.UserId == userId
+                              select new UserOrders
+                              {
+                                  userId = a.UserId,
+                                  orderId = a.OrdersId,
+                                  orderAmount = a.OrderAmount,
+                                  orderDate = a.OrderDate,
+                                  productId = d.ProductId,
+                                  productName = d.ProductName,
+                                  productDescription = d.ProductDescription,
+                                  productPrice = d.ProductPrice,
+                                  orderStatus = c.orderStatus
+                              }).ToListAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return NotFound();
+            }
         }
-        /*
-                [HttpGet]
-                public ActionResult OrderDetails()
-                {
-                    UserOrders order = new UserOrders();
-                    var user = User.Identity.Name;
-                    return (ActionResult)order.GetUserOrders(user);
-                }*/
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var order = await _context.Orders.FindAsync(id);
 
-            if (order == null)
+            if (order == null || order.UserId != userId)
             {
                 return NotFound();
             }
@@ -94,6 +114,13 @@ namespace project3.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+            {
+                order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            
+            order.OrderDate = DateTime.Now;
+
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
