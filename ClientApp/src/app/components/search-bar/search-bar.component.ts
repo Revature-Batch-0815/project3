@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AppServiceService } from 'src/app/services/app-services.service';
 import { Product } from 'src/products.model';
@@ -19,7 +20,8 @@ export class SearchBarComponent implements OnInit {
     private service: AppServiceService,
     private seachmessage: SearchMessageService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -35,7 +37,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   redirectOnEnter() {
-    this.location.replaceState('/product');
+    this._router.navigateByUrl('/product');
   }
 
   getProductsBySearchTerm() {
