@@ -83,9 +83,8 @@ export class PayComponentComponent implements OnInit {
       console.log(this.userID.sub);
     })();*/
 
-
-  data: any = localStorage.getItem('Cart');
-  dataSource = JSON.parse(this.data);
+  //data: any = localStorage.getItem('Cart');
+  //dataSource = JSON.parse(this.data);
 
     /* aaron's paypal stuff
      * window.paypal.Buttons(

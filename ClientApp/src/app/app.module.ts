@@ -15,7 +15,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { ViewOrdersComponent } from './Components/view-orders/view-orders.component';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
 
@@ -88,7 +88,7 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     ProductListComponent,
     ProductDetailsComponent,
     PayComponentComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
     FetchDataComponent,
     SearchBarComponent
   ],
