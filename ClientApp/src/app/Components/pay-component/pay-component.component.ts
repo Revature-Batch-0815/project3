@@ -9,6 +9,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { map, Observable } from 'rxjs';
 import { first } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Order } from '../../../order.model';
 
 /*
  * Notes:
@@ -57,7 +59,7 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
+  constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   userID?: any;
@@ -212,18 +214,20 @@ export class PayComponentComponent implements OnInit {
   confirmCheckout() {
     (async () => {
       await this.delay(2000);
-      console.log('post request to orders for $', this.subtotal, 'from ', this.userID.sub);
+      console.log('post request to orders for $', this.subtotal, 'from Hailey');
       this.clearCart();
     })();
 
-    /*console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
+    console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
     var theOrder;
     var items: any = [];
-    var shoppingCart: string = this.cart2;
+    var shoppingCart: any =  JSON.parse(this.cart2);
     items[0] = this.subtotal;
-    items[1] = this.userID.sub;
+    //items[1] = this.userID.sub;
+    items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
     items[2] = shoppingCart;
-    //theOrder.put("orderAmount", this.subtotal);
+
+    
     var fakeOrder = [
       {
         "productId": 42,
@@ -233,6 +237,17 @@ export class PayComponentComponent implements OnInit {
       }
 
     ];
+    //take cart and turn it into a regular array
+    var orderPost: any = [];
+    //for each item in cart 2
+    for (var item in this.cart2) {
+      fakeOrder[0].productId = this.cart2[item].productId;
+      fakeOrder[0].orderAmount = this.cart2[item].productPrice;
+      orderPost[item] += fakeOrder;
+    }
+    console.log(fakeOrder);
+
+   
     items[3] = fakeOrder;
     theOrder = {
       "orderAmount": items[0],
@@ -240,13 +255,9 @@ export class PayComponentComponent implements OnInit {
       "orderDetails": items[3]
     }
     console.log(JSON.stringify(theOrder));
-    this.postToOrders(items);
-/*    export class Order {
-      orderAmount = "";
-      userId = "";
-      orderDetails = [];
-    }
+    this.http.post<Order>('https://localhost:7108/api/Orders', theOrder).subscribe(x => console.log(x));
 
+  
 
     function delay(ms: number) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -254,7 +265,7 @@ export class PayComponentComponent implements OnInit {
     (async () => {
       await delay(2000);
       this.clearCart();
-    })();*/
+    })();
 
    
   }
