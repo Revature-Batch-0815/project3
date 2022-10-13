@@ -20,6 +20,12 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.productService
+      .getProducts()
+      .subscribe((results: Product[]) => {
+        this.Products = results;
+        console.log('from productList:', results);
+      });
     this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
       .searchProducts(this.searchTerm)
