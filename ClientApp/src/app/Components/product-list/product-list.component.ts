@@ -21,23 +21,20 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.getCategoryies("")
     this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
       .searchProducts(this.searchTerm)
       .subscribe((results: Product[]) => {
         this.Products = results;
         console.log('from productList:', results);
+        this.getAllProducts()
       });
-    
-      this.getCategoryies("")
+      this.getAllProducts;
   }
-  getCategoryies(categories: string){
-    if(categories == ""){
+  getAllProducts(){
       this.productService.getProducts().subscribe((results: Product[]) => {
         this.Products = results;
         console.log('from productList:', results);
-      });
     }
   }
 }
