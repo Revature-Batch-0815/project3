@@ -32,6 +32,10 @@ export class SearchBarComponent implements OnInit {
     this.getProductsBySearchTerm();
   }
 
+  onSearchRequestSend() {
+    this.getProductsBySearchTerm();
+  }
+
   getProductsBySearchTerm() {
     this.seachmessage.changeMessage(this.enterSearchValue.toLowerCase());
     this.service
