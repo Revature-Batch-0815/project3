@@ -47,8 +47,8 @@ export class PayComponentComponent implements OnInit {
 
   cart2: any = [];
   cartNum: any = [];
-  cart: string[] = ['11','41','42','124','126','51'];
-  
+  cart: string[] = ['11', '41', '42', '124', '126', '51'];
+
 
   data: any = localStorage.getItem('Cart');
   dataSource = JSON.parse(this.data);
@@ -79,9 +79,9 @@ export class PayComponentComponent implements OnInit {
       await this.delay(2000);
       console.log(this.userID.sub);
     })();
-    
-    
-    
+
+
+
 
     /*this.authorizeService.getUser().subscribe(users => { this.userID = users; });
     (async () => {
@@ -97,8 +97,8 @@ export class PayComponentComponent implements OnInit {
       console.log(this.userID.sub);
     })();*/
 
-  //data: any = localStorage.getItem('Cart');
-  //dataSource = JSON.parse(this.data);*/
+    //data: any = localStorage.getItem('Cart');
+    //dataSource = JSON.parse(this.data);*/
 
 
     /* aaron's paypal stuff
@@ -178,7 +178,7 @@ export class PayComponentComponent implements OnInit {
         this.updateSubtotal();
       }
     })();
-    
+
   }
 
   clearCart() {
@@ -210,33 +210,53 @@ export class PayComponentComponent implements OnInit {
     localStorage.setItem("Cart", JSON.stringify(this.cartNum));
     this.showCart();
   }
-  fakeOrderTemplate: any = [
-  {
-    "productId": 0,
-    "orderAmount": 0,
-    "orderQty": 0,
-    "orderStatus": ""
-    }];
+  fakeOrderTemplate: any = 
+    {
+      "productId": 0,
+      "orderAmount": 0,
+      "orderQty": 0,
+      "orderStatus": ""
+    };
   fakeOrder: any = [];
   getOrder() {
     this.fakeOrder = [];
     for (let x in this.cart2) {
-      this.fakeOrder.push(this.fakeOrderTemplate.slice(0));
+      //this.fakeOrder.push(this.fakeOrderTemplate.slice(0));
+      this.fakeOrder.push(JSON.parse(JSON.stringify(this.fakeOrderTemplate)));
+  
       this.fakeOrder[x].productId = this.cart2[x].productId;
       this.fakeOrder[x].orderAmount = this.cart2[x].productPrice;
       this.fakeOrder[x].orderQty = 1;
       this.fakeOrder[x].orderStatus = 'Received';
     }
+    this.fakeOrder = this.fakeOrder.flat(1);
     console.log(this.fakeOrder);
+    return this.fakeOrder;
   }
 
   confirmCheckout() {
     (async () => {
       await this.delay(2000);
+    
       console.log('post request to orders for $', this.subtotal, 'from Hailey');
+      this.getOrder();
+      var items: any = [];
+      items[0] = this.subtotal;
+      //items[1] = this.userID.sub;
+      items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
+     
+      var theOrder = {
+        "orderAmount": items[0],
+        "userId": "666fbab1-d1e0-413f-9e60-808a3b563c86",
+        "orderDetails": this.getOrder()
+      }
+      console.log(JSON.stringify(theOrder));
+      this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
       this.clearCart();
     })();
     /*
+     *[3799.95, '666fbab1-d1e0-413f-9e60-808a3b563c86', Array(6)]
+     * 
     console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
     var theOrder;
     var items: any = [];
@@ -286,10 +306,10 @@ export class PayComponentComponent implements OnInit {
       this.clearCart();
     })();*/
 
-   
+
   }
 
-  
+
 }
 
 
