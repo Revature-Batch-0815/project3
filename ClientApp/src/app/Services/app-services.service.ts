@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,6 +11,7 @@ import { Product } from 'src/products.model';
 })
 export class AppServiceService {
   private url = 'api/products';
+
   //private baseUrl = environment.apiUrl;
   @Inject('BASE_API_URL') private baseUrl1: string = "";
 
