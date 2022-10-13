@@ -5,7 +5,7 @@
 
 .prodCard {
   width: 300px;
-
+  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -16,4 +16,19 @@
 
 .blue {
   background-color: blue;
+}
+
+.example-container {
+  width: 185px;
+  margin-right: 10px;
+  padding: 3px;
+  text-align: left;
+  font-size: small;
+}
+
+.filterButton {
+    height: 100%;
+    width: fit-content;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
