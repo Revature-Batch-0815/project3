@@ -210,6 +210,25 @@ export class PayComponentComponent implements OnInit {
     localStorage.setItem("Cart", JSON.stringify(this.cartNum));
     this.showCart();
   }
+  fakeOrderTemplate: any = [
+  {
+    "productId": 0,
+    "orderAmount": 0,
+    "orderQty": 0,
+    "orderStatus": ""
+    }];
+  fakeOrder: any = [];
+  getOrder() {
+    this.fakeOrder = [];
+    for (let x in this.cart2) {
+      this.fakeOrder.push(this.fakeOrderTemplate.slice(0));
+      this.fakeOrder[x].productId = this.cart2[x].productId;
+      this.fakeOrder[x].orderAmount = this.cart2[x].productPrice;
+      this.fakeOrder[x].orderQty = 1;
+      this.fakeOrder[x].orderStatus = 'Received';
+    }
+    console.log(this.fakeOrder);
+  }
 
   confirmCheckout() {
     (async () => {
@@ -217,7 +236,7 @@ export class PayComponentComponent implements OnInit {
       console.log('post request to orders for $', this.subtotal, 'from Hailey');
       this.clearCart();
     })();
-
+    /*
     console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
     var theOrder;
     var items: any = [];
@@ -265,7 +284,7 @@ export class PayComponentComponent implements OnInit {
     (async () => {
       await delay(2000);
       this.clearCart();
-    })();
+    })();*/
 
    
   }
