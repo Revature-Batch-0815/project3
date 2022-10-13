@@ -5,6 +5,7 @@
   name="search"
   [(ngModel)]="enterSearchValue"
   (input)="onSearchTextChanged()"
+  (keyup.enter)="redirectOnEnter()"
 />
 <a [routerLink]="['product']" class="search-btn">
   <svg
