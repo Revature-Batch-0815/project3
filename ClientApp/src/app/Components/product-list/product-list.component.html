@@ -1,3 +1,55 @@
+
+<div>
+  <mat-drawer-container>
+    <mat-drawer class="example-container" #sidenav mode="side">
+      
+      <h4 style="text-align:center">Filter by Category</h4>
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div *ngFor="let category of categories; let i = index">
+          <input type="checkbox" formArrayName="selectedCategories" [value]="category.value"
+                 (change)="onCheckboxChange($event)"/>
+          {{category.name}}
+        </div>
+        <br />
+        <button type="submit">Sort</button>
+      </form>
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="filterButton">
+        <button (click)="sidenav.toggle()">Sort</button>
+      </div>
+      <div class="cardHolder">
+
+        <div *ngFor="let item of filteredProducts">
+          <mat-card class="example-card prodCard">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title><a [routerLink]="['/pdetails', item.productId]">{{item.productName}}</a></mat-card-title>
+              <mat-card-subtitle>{{item.productCategory}}</mat-card-subtitle>
+            </mat-card-header>
+            <a [routerLink]="['/pdetails', item.productId]">
+              <img style="padding-top:20px" mat-card-image src={{item.productImgUrl}} alt="Photo of a Shiba Inu">
+            </a>
+            <mat-card-content>
+              <p>
+                {{item.productDescription}}
+              </p>
+              <p>
+                {{item.productPrice}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>Buy</button>
+              <button mat-button>Wishlist</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-drawer-content>
+  </mat-drawer-container>
+
 <div class="cardHolder">
   <div *ngFor="let item of Products">
     <mat-card
@@ -39,3 +91,5 @@
     </mat-card>
   </div>
 </div>
+
+
