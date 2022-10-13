@@ -12,16 +12,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductListComponent implements OnInit {
   Products: Product[] = [];
-  searchTerm: string = "i";
+  searchTerm: string = 'i';
 
-  constructor(private productService: AppServiceService, private searchMessage: SearchMessageService) {}
+  constructor(
+    private productService: AppServiceService,
+    private searchMessage: SearchMessageService
+  ) {}
 
   ngOnInit(): void {
-    this.searchMessage.changeMessage(this.searchTerm)
-    this.searchMessage.currentMessage.subscribe(d =>
-      this.searchTerm = d)
+    this.searchMessage.changeMessage(this.searchTerm);
+    this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
       .searchProducts(this.searchTerm)
-      .subscribe((results: Product[]) => (this.Products = results));
+      .subscribe((results: Product[]) => {
+        this.Products = results;
+        console.log('from productList:', results);
+      });
   }
 }

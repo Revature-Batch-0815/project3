@@ -12,7 +12,7 @@ import { SearchMessageService } from 'src/app/Services/search-message.service';
 export class SearchBarComponent implements OnInit {
   Products: Product[] = [];
 
-  message:string="";
+  message: string = '';
 
   constructor(
     private service: AppServiceService,
@@ -27,19 +27,18 @@ export class SearchBarComponent implements OnInit {
   @Output()
   textChangeEmitter: EventEmitter<string> = new EventEmitter<string>();
 
-
   onSearchTextChanged() {
     this.textChangeEmitter.emit(this.enterSearchValue);
     this.getProductsBySearchTerm();
   }
 
   getProductsBySearchTerm() {
-    this.seachmessage.changeMessage(this.enterSearchValue)
+    this.seachmessage.changeMessage(this.enterSearchValue.toLowerCase());
     this.service
       .searchProducts(this.enterSearchValue)
       .subscribe((data: Product[]) => {
         this.Products = data;
-        console.log(data);
+        console.log('from searchbar: ', data);
       });
   }
 }
