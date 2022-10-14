@@ -69,7 +69,7 @@ export class PayComponentComponent implements OnInit {
   //ON INIT HERE
 
   ngOnInit(): void {
-    this.addCart();
+    //this.addCart(); //for testing
     this.showCart();
 
 
