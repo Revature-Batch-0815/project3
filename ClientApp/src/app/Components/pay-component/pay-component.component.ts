@@ -9,6 +9,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { map, Observable } from 'rxjs';
 import { first } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Order } from '../../../order.model';
 
 /*
  * Notes:
@@ -45,8 +47,8 @@ export class PayComponentComponent implements OnInit {
 
   cart2: any = [];
   cartNum: any = [];
-  cart: string[] = ['11','41','42','124','126','51'];
-  
+  cart: string[] = ['11', '41', '42', '124', '126', '51'];
+
 
   data: any = localStorage.getItem('Cart');
   dataSource = JSON.parse(this.data);
@@ -57,19 +59,31 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  constructor(private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
+  constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   userID?: any;
-  actualID: any = "";
-
+  store: string = "";
+  count: number = 0;
 
   //ON INIT HERE
 
   ngOnInit(): void {
-    this.addCart();
+    //this.addCart(); //for testing
     this.showCart();
+
+
+    this.count = 0;
     this.authorizeService.getUser().subscribe(users => { this.userID = users; });
+    (async () => {
+      await this.delay(2000);
+      console.log(this.userID.sub);
+    })();
+
+
+
+
+    /*this.authorizeService.getUser().subscribe(users => { this.userID = users; });
     (async () => {
       await delay(3000);
       this.updateSubtotal();
@@ -83,8 +97,9 @@ export class PayComponentComponent implements OnInit {
       console.log(this.userID.sub);
     })();*/
 
-  //data: any = localStorage.getItem('Cart');
-  //dataSource = JSON.parse(this.data);
+    //data: any = localStorage.getItem('Cart');
+    //dataSource = JSON.parse(this.data);*/
+
 
     /* aaron's paypal stuff
      * window.paypal.Buttons(
@@ -132,22 +147,38 @@ export class PayComponentComponent implements OnInit {
     localStorage.setItem("Cart", JSON.stringify(this.cart));
   }
   subtotal = 0;
-
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   showCart() {
-    console.log("it works");
+    this.cart2 = [];
     let data: any = localStorage.getItem('Cart');
     this.cartNum = JSON.parse(data);
     for (let x in this.cartNum) {
       this.getProductById(this.cartNum[x]);
     }
+    console.log(this.cart2);
+    (async () => {
+      await this.delay(150);
+      this.updateSubtotal();
+    })();
   }
 
   updateSubtotal() {
+    this.subtotal = 0;
     for (let x in this.cart2) {
       this.subtotal += parseFloat(this.cart2[x].productPrice);
       this.subtotal = parseFloat(this.subtotal.toFixed(2));
-      console.log(this.subtotal);
     }
+    (async () => {
+      await this.delay(1000);
+      console.log("refresh");
+      this.count++;
+      if (this.count < 10) {
+        this.updateSubtotal();
+      }
+    })();
+
   }
 
   clearCart() {
@@ -164,15 +195,82 @@ export class PayComponentComponent implements OnInit {
   postToOrders(order: any) {
     this.orderService.addOrder(order);
   }
+  temp: any = [];
+  lock: boolean = false;
+  removeItem(thingy: string) {
+    this.temp = [];
+    this.count = 0;
+    console.log(thingy);
+    this.lock = false;
+    for (let x in this.cartNum) {
+      if (this.cartNum[x] != thingy || this.lock == true) {
+        this.temp.push(this.cartNum[x]);
+      }
+      else {
+        this.lock = true;
+      }
+    }
+    this.cartNum = this.temp;
+    console.log(this.cartNum);
+    localStorage.setItem("Cart", JSON.stringify(this.cartNum));
+    this.showCart();
+  }
+  fakeOrderTemplate: any = 
+    {
+      "productId": 0,
+      "orderAmount": 0,
+      "orderQty": 0,
+      "orderStatus": ""
+    };
+  fakeOrder: any = [];
+  getOrder() {
+    this.fakeOrder = [];
+    for (let x in this.cart2) {
+      //this.fakeOrder.push(this.fakeOrderTemplate.slice(0));
+      this.fakeOrder.push(JSON.parse(JSON.stringify(this.fakeOrderTemplate)));
+  
+      this.fakeOrder[x].productId = this.cart2[x].productId;
+      this.fakeOrder[x].orderAmount = this.cart2[x].productPrice;
+      this.fakeOrder[x].orderQty = 1;
+      this.fakeOrder[x].orderStatus = 'Received';
+    }
+    this.fakeOrder = this.fakeOrder.flat(1);
+    console.log(this.fakeOrder);
+    return this.fakeOrder;
+  }
 
   confirmCheckout() {
+    (async () => {
+      await this.delay(2000);
+    
+      console.log('post request to orders for $', this.subtotal, 'from Hailey');
+      this.getOrder();
+      var items: any = [];
+      items[0] = this.subtotal;
+      //items[1] = this.userID.sub;
+      items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
+     
+      var theOrder = {
+        "orderAmount": items[0],
+        "userId": "666fbab1-d1e0-413f-9e60-808a3b563c86",
+        "orderDetails": this.getOrder()
+      }
+      console.log(JSON.stringify(theOrder));
+      this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
+      this.clearCart();
+    })();
+    /*
+     *[3799.95, '666fbab1-d1e0-413f-9e60-808a3b563c86', Array(6)]
+     * 
     console.log('post request to orders for $', this.subtotal, 'from ', this.authorizeService.getUser().pipe(map(u => u && u.name)));
     var theOrder;
     var items: any = [];
-    var shoppingCart: string = this.cart2;
+    var shoppingCart: any =  JSON.parse(this.cart2);
     items[0] = this.subtotal;
-    items[1] = this.userID.sub;
+    //items[1] = this.userID.sub;
+    items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
     items[2] = shoppingCart;
+
     //theOrder.put("orderAmount", this.subtotal);
 
     var fakeOrder = [
@@ -184,6 +282,17 @@ export class PayComponentComponent implements OnInit {
       }
 
     ];
+    //take cart and turn it into a regular array
+    var orderPost: any = [];
+    //for each item in cart 2
+    for (var item in this.cart2) {
+      fakeOrder[0].productId = this.cart2[item].productId;
+      fakeOrder[0].orderAmount = this.cart2[item].productPrice;
+      orderPost[item] += fakeOrder;
+    }
+    console.log(fakeOrder);
+
+   
     items[3] = fakeOrder;
     theOrder = {
       "orderAmount": items[0],
@@ -191,13 +300,9 @@ export class PayComponentComponent implements OnInit {
       "orderDetails": items[3]
     }
     console.log(JSON.stringify(theOrder));
-    this.postToOrders(items);
-/*    export class Order {
-      orderAmount = "";
-      userId = "";
-      orderDetails = [];
-    }
-*/
+    this.http.post<Order>('https://localhost:7108/api/Orders', theOrder).subscribe(x => console.log(x));
+
+  
 
     function delay(ms: number) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -205,10 +310,11 @@ export class PayComponentComponent implements OnInit {
     (async () => {
       await delay(2000);
       this.clearCart();
-    })();
+    })();*/
 
-   
+
   }
+
 
 }
 

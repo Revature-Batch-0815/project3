@@ -23,4 +23,19 @@ export class ProductDetailsComponent implements OnInit {
   getProductById(id: string) {
     this.service.getProductById(id).subscribe((data: Product) => this.product = data);
   }
+
+  cart: string[] = [];
+  addCart(thingy: string | undefined) {
+    if (thingy == undefined) {
+      return;
+    }
+    console.log(thingy);
+    let data: any = localStorage.getItem('Cart');
+    if (JSON.parse(data) != null) {
+      this.cart = JSON.parse(data);
+    }
+    this.cart.push(thingy);
+    console.log(this.cart);
+    localStorage.setItem("Cart", JSON.stringify(this.cart));
+  }
 }
