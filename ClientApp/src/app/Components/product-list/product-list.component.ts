@@ -40,12 +40,10 @@ export class ProductListComponent implements OnInit {
   }
 
 
-/*  private _pricePick: number = 0;*/
 
   constructor(private productService: AppServiceService, fb: FormBuilder) {
     this.form = fb.group({
-      selectedCategories: new FormArray([]),
-      pricePick: new FormArray([])
+      selectedCategories: new FormArray([])
     });
   }
 
@@ -68,26 +66,37 @@ export class ProductListComponent implements OnInit {
 
   submit() {
     const selectedCategories = (this.form.controls['selectedCategories'] as FormArray);
-    //const pricePick = (this.form.controls['pricePick']);
-    //console.log(pricePick.value);
+
+    //Sort by Category
     if (selectedCategories.length == 1) {
       this.filteredProducts = this.Products.filter(item => item.productCategory == selectedCategories.value[0]);
       this.productBank = this.filteredProducts.slice(0);
-      console.log(this.filteredProducts);
     }
     else if (selectedCategories.length == 2) {
       this.filteredProducts = this.Products.filter(item => item.productCategory == selectedCategories.value[0] || item.productCategory == selectedCategories.value[1]);
       this.productBank = this.filteredProducts.slice(0);
-      console.log(this.filteredProducts);
     }
     else if (selectedCategories.length == 3) {
       this.filteredProducts = this.Products.filter(item => item.productCategory == selectedCategories.value[0] || item.productCategory == selectedCategories.value[1] || item.productCategory == selectedCategories.value[2]);
       this.productBank = this.filteredProducts.slice(0);
-      console.log(this.filteredProducts);
     }
     else {
-      this.productService.getProducts().subscribe((results: Product[]) => (this.filteredProducts = results));
+      this.filteredProducts = this.Products;
       this.productBank = this.filteredProducts.slice(0);
+    }
+
+    //Sort by Price
+    const less = document.getElementById('lessThan') as FormRecord | null;
+    const greater = document.getElementById('greaterThan') as FormRecord | null;
+
+    if (less?.value && greater?.value) {
+      this.filteredProducts = this.productBank.filter(item => Number(item.productPrice) >= Number(greater.value) && Number(item.productPrice) <= Number(less.value));
+    }
+    else if (less?.value) {
+      this.filteredProducts = this.productBank.filter(item => Number(item.productPrice) <= Number(less.value));
+    }
+    else if (greater?.value) {
+      this.filteredProducts = this.productBank.filter(item => Number(item.productPrice) >= Number(greater.value));
     }
   }
 }
