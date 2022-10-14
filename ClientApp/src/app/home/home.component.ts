@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchMessageService } from 'src/app/services/search-message.service';
 import { AppServiceService } from '../services/app-services.service';
@@ -8,7 +8,7 @@ import { Product } from 'src/products.model';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   constructor(
     private service: AppServiceService,
     private _router: Router,
@@ -18,13 +18,19 @@ export class HomeComponent {
   enterSearchValue: string = '';
   Products: Product[] = [];
 
+  @ViewChild('displayRef') displayElementRef!: ElementRef;
+
+  ngAfterViewInit() {
+    console.log(this.displayElementRef.nativeElement.textContent);
+  }
+
   getProductsBySearchTerm() {
-    this.seachmessage.changeMessage(this.enterSearchValue.toLowerCase());
+    // this.seachmessage.changeMessage();
     this.service
       .searchProducts(this.enterSearchValue)
       .subscribe((data: Product[]) => {
         this.Products = data;
-        console.log('from searchbar: ', data);
+        console.log('from homepage: ', data);
       });
   }
 }
