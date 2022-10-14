@@ -4,6 +4,7 @@ import { AppServiceService } from '../../services/app-services.service';
 import { SearchMessageService } from 'src/app/services/search-message.service';
 
 import { HttpClient } from '@angular/common/http';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -20,16 +21,20 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((results: Product[]) => {
-      this.Products = results;
-      console.log('from productList:', results);
-    });
     this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
     this.productService
       .searchProducts(this.searchTerm)
       .subscribe((results: Product[]) => {
         this.Products = results;
         console.log('from productList:', results);
+        this.getAllProducts();
       });
+    this.getAllProducts();
+  }
+  getAllProducts() {
+    this.productService.getProducts().subscribe((results: Product[]) => {
+      this.Products = results;
+      console.log('from productList:', results);
+    });
   }
 }
