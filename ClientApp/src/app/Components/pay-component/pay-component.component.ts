@@ -174,6 +174,7 @@ export class PayComponentComponent implements OnInit {
     items[1] = this.userID.sub;
     items[2] = shoppingCart;
     //theOrder.put("orderAmount", this.subtotal);
+
     var fakeOrder = [
       {
         "productId": 42,
