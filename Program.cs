@@ -43,14 +43,13 @@ else
 }
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseIdentityServer();
 app.UseAuthorization();
-app.UseDeveloperExceptionPage();
+app.UseExceptionHandler();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
