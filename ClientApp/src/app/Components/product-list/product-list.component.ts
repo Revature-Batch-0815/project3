@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
 
   Products: Product[] = [];
 
- searchTerm: string = 'i';
+ //searchTerm: string = 'i';
 
   categories: Array<any> = [
     { name: 'Computers & Displays', value: 'Computers & Displays' },
@@ -90,6 +90,13 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  getAllProducts() {
+    this.productService.getProducts().subscribe((results: Product[]) => {
+      this.Products = results;
+      console.log('from productList:', results);
+    });
+  }
+
   submit() {
     const selectedCategories = (this.form.controls['selectedCategories'] as FormArray);
 
@@ -125,11 +132,6 @@ export class ProductListComponent implements OnInit {
       this.filteredProducts = this.productBank.filter(item => Number(item.productPrice) >= Number(greater.value));
     }
     
-      getAllProducts() {
-    this.productService.getProducts().subscribe((results: Product[]) => {
-      this.Products = results;
-      console.log('from productList:', results);
-    });
-
+    
   }
 }
