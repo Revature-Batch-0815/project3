@@ -19,7 +19,7 @@
 }
 
 .example-container {
-  width: 185px;
+  width: 225px;
   margin-right: 10px;
   padding: 3px;
   text-align: left;
@@ -27,8 +27,8 @@
 }
 
 .filterButton {
-    height: 100%;
+    height: max-content;
     width: fit-content;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin: 10px;
+
 }

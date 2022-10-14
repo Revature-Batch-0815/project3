@@ -2,16 +2,31 @@
 <div>
   <mat-drawer-container>
     <mat-drawer class="example-container" #sidenav mode="side">
+      <br />
+      <div class="form-group" style="margin:10px">
+        <input typeof="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" />
+      </div>
+      <br />
 
-      <h4 style="text-align:center">Filter by Category</h4>
+      <h4 style="text-align:center">Categories</h4>
       <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-        <div *ngFor="let category of categories; let i = index">
+        <div *ngFor="let category of categories; let i = index" style="margin-left:10px">
           <input type="checkbox" formArrayName="selectedCategories" [value]="category.value"
                  (change)="onCheckboxChange($event)" />
           {{category.name}}
         </div>
         <br />
-        <button type="submit">Sort</button>
+        <!--<div style="display: flex; flex-direction: row; width: 100%; margin-left:10px">
+          <h4 style="margin-right: 10px;">Price < </h4>
+          <input type="number" style="width:60%; height:25px" placeholder="$" formArrayName="pricePick"/>
+        </div>
+
+        <br />-->
+
+
+        <div style="text-align:center">
+          <button type="submit">Sort</button>
+        </div>
       </form>
 
     </mat-drawer>
