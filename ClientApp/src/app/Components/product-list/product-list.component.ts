@@ -34,6 +34,18 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((results: Product[]) => (this.filteredProducts = results));
   }
 
+  cart: string[] = [];
+  addCart(thingy: string) {
+    console.log(thingy);
+    let data: any = localStorage.getItem('Cart');
+    if (JSON.parse(data) != null) {
+      this.cart = JSON.parse(data);
+    }
+    this.cart.push(thingy);
+    console.log(this.cart);
+    localStorage.setItem("Cart", JSON.stringify(this.cart));
+  }
+
   onCheckboxChange(event: any) {
     const selectedCategories = (this.form.controls['selectedCategories'] as FormArray);
     if (event.target.checked) {

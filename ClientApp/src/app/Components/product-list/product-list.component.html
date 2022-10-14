@@ -40,7 +40,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>Buy</button>
+              <button (click) = "addCart(item.productId)" mat-button>Buy</button>
               <button mat-button>Wishlist</button>
             </mat-card-actions>
           </mat-card>
