@@ -196,13 +196,18 @@ export class PayComponentComponent implements OnInit {
     this.orderService.addOrder(order);
   }
   temp: any = [];
+  lock: boolean = false;
   removeItem(thingy: string) {
     this.temp = [];
     this.count = 0;
     console.log(thingy);
+    this.lock = false;
     for (let x in this.cartNum) {
-      if (this.cartNum[x] != thingy) {
+      if (this.cartNum[x] != thingy || this.lock == true) {
         this.temp.push(this.cartNum[x]);
+      }
+      else {
+        this.lock = true;
       }
     }
     this.cartNum = this.temp;
