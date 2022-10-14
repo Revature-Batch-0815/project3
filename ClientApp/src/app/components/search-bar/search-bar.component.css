@@ -2,35 +2,35 @@
   display: flex inline-block;
 }
 
-
-@media (min-width: 1001px){
-  
+@media (min-width: 1001px) {
   #search {
     height: 50px;
     width: 30vw;
-    border:none;
+    border: none;
     border-radius: 8px 0 0 8px;
   }
-  
-  
-  .search-btn{
-      width: 40px;
-      height: 50px;
-      border: none;
-      border-radius:0 8px 8px 0;
-      margin-right: px;
-    
-}
+
+  .search-btn {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15.5px;
+    padding-bottom: 16px;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    margin-right: px;
+    background-color: #e5e5e5;
+    color: #0c1322;
+  }
 }
 
-@media (max-width: 1000px) and (min-width:577px){
+@media (max-width: 1000px) and (min-width: 577px) {
   #search {
     height: 5vh;
     width: 10vw;
     border: none;
     border-radius: 8px 0 0 8px;
   }
-  
+
   .search-btn {
     width: 3.5vw;
     height: 5.01vh;
@@ -38,21 +38,22 @@
     border-radius: 0 8px 8px 0;
     margin-right: 2vw;
   }
- }
- @media (max-width: 770px) and (min-width:577px){
-  #search,.search-btn{
+}
+@media (max-width: 770px) and (min-width: 577px) {
+  #search,
+  .search-btn {
     visibility: hidden;
   }
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   #search {
     height: 5vh;
     width: 50vw;
     border: none;
     border-radius: 8px 0 0 8px;
   }
-  
+
   .search-btn {
     width: 5.8vw;
     height: 5.01vh;
@@ -60,5 +61,4 @@
     border-radius: 0 8px 8px 0;
     margin-right: 2vw;
   }
-
 }

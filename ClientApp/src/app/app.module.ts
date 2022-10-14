@@ -69,8 +69,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-
 import { MatTableModule } from '@angular/material/table';
+
+import { SearchMessageService } from './services/search-message.service';
 import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 
@@ -211,6 +212,7 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    SearchMessageService
   ],
   bootstrap: [AppComponent],
 })

@@ -271,7 +271,8 @@ export class PayComponentComponent implements OnInit {
     items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
     items[2] = shoppingCart;
 
-    
+    //theOrder.put("orderAmount", this.subtotal);
+
     var fakeOrder = [
       {
         "productId": 42,

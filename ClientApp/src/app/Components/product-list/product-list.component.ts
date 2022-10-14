@@ -1,9 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Product } from 'src/products.model';
 import { AppServiceService } from '../../services/app-services.service';
+import { SearchMessageService } from 'src/app/services/search-message.service';
 
 import { HttpClient } from '@angular/common/http';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormRecord } from '@angular/forms';
+
+import { FormArray, FormBuilder, FormControl, FormGroup, FormRecord, SelectMultipleControlValueAccessor } from '@angular/forms';
+
 
 @Component({
   selector: 'app-product-list',
@@ -13,6 +16,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, FormRecord } from '@ang
 export class ProductListComponent implements OnInit {
 
   Products: Product[] = [];
+
+ searchTerm: string = 'i';
 
   categories: Array<any> = [
     { name: 'Computers & Displays', value: 'Computers & Displays' },
@@ -41,7 +46,7 @@ export class ProductListComponent implements OnInit {
 
 
 
-  constructor(private productService: AppServiceService, fb: FormBuilder) {
+  constructor(private productService: AppServiceService, fb: FormBuilder, private searchMessage: SearchMessageService) {
     this.form = fb.group({
       selectedCategories: new FormArray([])
     });
@@ -51,6 +56,15 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((results: Product[]) => (this.Products = results));
     this.productService.getProducts().subscribe((results: Product[]) => (this.filteredProducts = results));
     this.productService.getProducts().subscribe((results: Product[]) => (this.productBank = results));
+    this.searchMessage.currentMessage.subscribe((d) => (this.searchTerm = d));
+    this.productService
+      .searchProducts(this.searchTerm)
+      .subscribe((results: Product[]) => {
+        this.Products = results;
+        console.log('from productList:', results);
+        this.getAllProducts();
+      });
+    this.getAllProducts();
   }
 
   cart: string[] = [];
@@ -110,5 +124,12 @@ export class ProductListComponent implements OnInit {
     else if (greater?.value) {
       this.filteredProducts = this.productBank.filter(item => Number(item.productPrice) >= Number(greater.value));
     }
+    
+      getAllProducts() {
+    this.productService.getProducts().subscribe((results: Product[]) => {
+      this.Products = results;
+      console.log('from productList:', results);
+    });
+
   }
 }

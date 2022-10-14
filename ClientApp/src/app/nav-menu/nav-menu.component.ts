@@ -1,5 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-nav-menu',
@@ -20,6 +21,9 @@ export class NavMenuComponent implements OnInit {
       this.cartNo = JSON.parse(data).length;
     }
   }
+  @Output()
+  textChangeEmitter: EventEmitter<string> = new EventEmitter<string>();
+
 
   collapse() {
     this.isExpanded = false;
@@ -29,8 +33,8 @@ export class NavMenuComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  onSearchTextEntered(searchValue: string) {
+  getSearchTermFromInput(searchValue: string) {
     this.searchText = searchValue;
-    console.log(this.searchText);
+    this.textChangeEmitter.emit(this.searchText);
   }
 }
