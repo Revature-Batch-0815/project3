@@ -4,12 +4,12 @@
     <p class="lead">Use Code <br />"Revvy Retro" For 15 % off!</p>
   </div>
   <!-- banner -->
-    <!-- <div class="banner-head-text"> -->
-      <!-- <h1>Join Us</h1> 
+  <!-- <div class="banner-head-text"> -->
+  <!-- <h1>Join Us</h1> 
       <p class="lead">Sign up now to keep up with all tech modern and retro!</p> -->
-    <!-- </div>  -->
-    <img class="img-fluid" src="https://drx-labs.com/header.png" alt="">
-    <!-- <img
+  <!-- </div>  -->
+  <img class="img-fluid" src="https://drx-labs.com/header.png" alt="" />
+  <!-- <img
       src="https://via.placeholder.com/1650x250?text=Tech+and+Games"
       alt=""
     /> -->
@@ -19,40 +19,52 @@
 <section class="p5 my-5" id="category">
   <h1 class="text-center" id="head-text">Shop By Category</h1>
   <div class="cards-wrapper-cat">
-    <a href="">
+    <button
+      (click)="getProductsByDisplayCategory('Computers & Displays')"
+      style="background-color: #14213d; border: none"
+    >
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/lp.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Computers & Displays</p>
         </div>
       </div>
-    </a>
-    <a href="">
+    </button>
+    <button
+      (click)="getProductsByDisplayCategory('Communication & Audio')"
+      style="background-color: #14213d; border: none"
+    >
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/senny.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Communication & Audio</p>
         </div>
       </div>
-    </a>
+    </button>
   </div>
   <div class="cards-wrapper-cat">
-    <a href="">
+    <button
+      (click)="getProductsByDisplayCategory('Console Systems & Games')"
+      style="background-color: #14213d; border: none"
+    >
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/p5.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Console Systems & Games</p>
         </div>
       </div>
-    </a>
-    <a href="">
+    </button>
+    <button
+      (click)="getProductsByDisplayCategory('Components & Networking')"
+      style="background-color: #14213d; border: none"
+    >
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/ram.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Components & Networking</p>
         </div>
       </div>
-    </a>
+    </button>
   </div>
 </section>
 <!-- Retro spotlight -->
@@ -62,57 +74,67 @@
   <div class="cards-wrapper">
     <div class="card text-bg-dark" id="retro-card">
       <div class="hoverwrap">
-      <img
-        src="https://drx-labs.com/colorfly-c4.png"
-        class="card-img"
-        alt="..."
-      />
-      <div class="card-img-overlay">
-        <div class="hovercap">
-        <div class="card-text" id="retro-text">
-          <h1>Colorfly-c4 Hi-fi Player</h1>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-            Voluptatum ex repudiandae amet aut soluta est!</p>
+        <img
+          src="https://drx-labs.com/colorfly-c4.png"
+          class="card-img"
+          alt="..."
+        />
+        <div class="card-img-overlay">
+          <div class="hovercap">
+            <div class="card-text" id="retro-text">
+              <h1>Colorfly-c4 Hi-fi Player</h1>
+              <p class="lead">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptatum ex repudiandae amet aut soluta est!
+              </p>
+            </div>
+            <button href="#" class="c-btn">Add To Cart</button>
+            <button href="#" class="c-btn">Veiw Details</button>
+          </div>
         </div>
-        <button href="#" class="c-btn">Add To Cart</button>
-        <button href="#" class="c-btn">Veiw Details</button>
-</div>
-    </div>
-</div>
+      </div>
     </div>
     <div class="card text-bg-dark" id="retro-card">
       <div class="hoverwrap">
-      <img src="https://drx-labs.com/stax.png" class="card-img" alt="..." />
-      <div class="card-img-overlay">
-        <div class="hovercap">
-        <div class="card-text">
-          <h1>Stax SR-Lambda Pro</h1> 
-          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Error harum dolorem, ipsam explicabo ipsum architecto?</p>
+        <img src="https://drx-labs.com/stax.png" class="card-img" alt="..." />
+        <div class="card-img-overlay">
+          <div class="hovercap">
+            <div class="card-text">
+              <h1>Stax SR-Lambda Pro</h1>
+              <p class="lead">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+                harum dolorem, ipsam explicabo ipsum architecto?
+              </p>
+            </div>
+            <button href="#" class="c-btn">Add To Cart</button>
+            <button href="#" class="c-btn">Veiw Details</button>
+          </div>
         </div>
-        <button href="#" class="c-btn">Add To Cart</button>
-        <button href="#" class="c-btn">Veiw Details</button>
-</div>
+      </div>
     </div>
-  </div>
-</div>
     <div class="card text-bg-dark" id="retro-card">
       <div class="hoverwrap">
-      <img src="https://drx-labs.com/famicom.png" class="card-img" alt="..." />
-      <div class="card-img-overlay">
-        <div class="hovercap">
-        <div class="card-text">
-          <h1>Japanese Famicom Console</h1>
-          <p class="lead">Lorem ipsum dolor sit amet, elit. 
-            Dolorum natus voluptate sit commodi incidunt error.</p>
+        <img
+          src="https://drx-labs.com/famicom.png"
+          class="card-img"
+          alt="..."
+        />
+        <div class="card-img-overlay">
+          <div class="hovercap">
+            <div class="card-text">
+              <h1>Japanese Famicom Console</h1>
+              <p class="lead">
+                Lorem ipsum dolor sit amet, elit. Dolorum natus voluptate sit
+                commodi incidunt error.
+              </p>
+            </div>
+            <button href="#" class="c-btn">Add To Cart</button>
+            <button href="#" class="c-btn">Veiw Details</button>
+          </div>
         </div>
-        <button href="#" class="c-btn">Add To Cart</button>
-        <button href="#" class="c-btn">Veiw Details</button>
-</div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </section>
 
 <!-- Trending Items -->
@@ -376,7 +398,7 @@
               </p>
               <button href="#" class="c-btn">Add To Cart</button>
               <button href="#" class="c-btn">Veiw Details</button>
-             </div>
+            </div>
           </div>
           <div class="card" id="card">
             <img
@@ -435,22 +457,22 @@
           <div class="mob-retro-head">Colorfly-c4 Hi-fi Player</div>
         </div>
         <div class="mob-retro-buttons">
-        <a href="#" class="c-btn">Add To Cart</a>
-        <a href="#" class="c-btn">Veiw Details</a>  
-      </div>
+          <a href="#" class="c-btn">Add To Cart</a>
+          <a href="#" class="c-btn">Veiw Details</a>
+        </div>
       </div>
     </div>
     <div class="card text-bg-dark" id="retro-card">
       <img src="https://drx-labs.com/stax.png" class="card-img" alt="..." />
       <div class="card-img-overlay">
         <div class="card-text">
-          <div class="mob-retro-head">Stax SR-Lambda Pro</div> 
+          <div class="mob-retro-head">Stax SR-Lambda Pro</div>
         </div>
         <div class="mob-retro-buttons">
           <a href="#" class="c-btn">Add To Cart</a>
-          <a href="#" class="c-btn">Veiw Details</a>  
+          <a href="#" class="c-btn">Veiw Details</a>
         </div>
-        </div>
+      </div>
     </div>
     <div class="card text-bg-dark" id="retro-card">
       <img src="https://drx-labs.com/famicom.png" class="card-img" alt="..." />
@@ -460,9 +482,9 @@
         </div>
         <div class="mob-retro-buttons">
           <a href="#" class="c-btn">Add To Cart</a>
-          <a href="#" class="c-btn">Veiw Details</a>  
+          <a href="#" class="c-btn">Veiw Details</a>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -558,7 +580,6 @@
     </button>
   </div>
 </section>
-
 
 <section class="footer">
   <footer class="p-2 bg-dark text-white text-center position-relative">
