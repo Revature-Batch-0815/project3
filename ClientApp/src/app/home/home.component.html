@@ -19,42 +19,40 @@
 <section class="p5 my-5" id="category">
   <h1 class="text-center" id="head-text">Shop By Category</h1>
   <div class="cards-wrapper-cat">
-    <a [routerLink]="['product']">
+    <button (click)="getProductsByDisplayCategory('Computers & Displays')">
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/lp.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
-          <p class="card-text" id="cat-img-text" #displayRef>
-            Computers & Displays
-          </p>
+          <p class="card-text" id="cat-img-text">Computers & Displays</p>
         </div>
       </div>
-    </a>
-    <a [routerLink]="['product']">
+    </button>
+    <button (click)="getProductsByDisplayCategory('Communication & Audio')">
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/senny.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Communication & Audio</p>
         </div>
       </div>
-    </a>
+    </button>
   </div>
   <div class="cards-wrapper-cat">
-    <a [routerLink]="['product']">
+    <button (click)="getProductsByDisplayCategory('Console Systems & Games')">
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/p5.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Console Systems & Games</p>
         </div>
       </div>
-    </a>
-    <a [routerLink]="['product']">
+    </button>
+    <button (click)="getProductsByDisplayCategory('Components & Networking')">
       <div class="card text-bg-dark" id="cat-card">
         <img src="https://drx-labs.com/ram.png" class="card-img" alt="..." />
         <div class="card-img-overlay">
           <p class="card-text" id="cat-img-text">Components & Networking</p>
         </div>
       </div>
-    </a>
+    </button>
   </div>
 </section>
 <!-- Retro spotlight -->

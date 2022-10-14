@@ -8,29 +8,21 @@ import { Product } from 'src/products.model';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
   constructor(
     private service: AppServiceService,
     private _router: Router,
-    private seachmessage: SearchMessageService
+    private searchmessage: SearchMessageService
   ) {}
 
-  enterSearchValue: string = '';
   Products: Product[] = [];
 
-  @ViewChild('displayRef') displayElementRef!: ElementRef;
-
-  ngAfterViewInit() {
-    console.log(this.displayElementRef.nativeElement.textContent);
-  }
-
-  getProductsBySearchTerm() {
-    // this.seachmessage.changeMessage();
-    this.service
-      .searchProducts(this.enterSearchValue)
-      .subscribe((data: Product[]) => {
-        this.Products = data;
-        console.log('from homepage: ', data);
-      });
+  getProductsByDisplayCategory(categoryTerm: string) {
+    this._router.navigateByUrl('/product');
+    this.searchmessage.changeMessage(categoryTerm);
+    this.service.searchProducts(categoryTerm).subscribe((data: Product[]) => {
+      this.Products = data;
+      console.log('from homepage: ', data);
+    });
   }
 }
