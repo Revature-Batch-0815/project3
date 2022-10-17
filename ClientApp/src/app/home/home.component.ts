@@ -25,4 +25,8 @@ export class HomeComponent {
       console.log('from homepage: ', data);
     });
   }
+
+  redirect(id: number) {
+    this._router.navigateByUrl(`pdetails/${id}`);
+  }
 }
