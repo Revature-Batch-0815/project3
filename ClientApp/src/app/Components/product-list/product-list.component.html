@@ -1,44 +1,40 @@
 
 <div class="cardHolder">
   <div *ngFor="let item of Products">
-    <mat-card
-      class="example-card prodCard"
-      *ngIf="
+    <mat-card *ngIf="
         searchTerm === '' ||
         item.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.productCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
-      "
-    >
+      " class="prodCard">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title
-          ><a [routerLink]="['/pdetails', item.productId]">{{
-            item.productName
-          }}</a></mat-card-title
-        >
-        <mat-card-subtitle>{{ item.productCategory }}</mat-card-subtitle>
+        <!--<div mat-card-avatar class="example-header-image"></div>-->
+        <mat-card-title id="pname">
+          <a [routerLink]="['/pdetails', item.productId]">
+            {{ item.productName }}
+          </a>
+        </mat-card-title>
+        <mat-card-subtitle id="pcategory">{{ item.productCategory }}</mat-card-subtitle>
       </mat-card-header>
       <a [routerLink]="['/pdetails', item.productId]">
-        <img
-          style="padding-top: 20px"
-          mat-card-image
-          src="{{ item.productImgUrl }}"
-          alt="Photo of a Shiba Inu"
-        />
+        <img style="padding-top: 20px"
+             mat-card-image
+             src="{{ item.productImgUrl }}"
+             alt="Photo of a Shiba Inu" />
       </a>
       <mat-card-content>
-        <p>
+        <p id="pdescribe">
           {{ item.productDescription }}
         </p>
-        <p>
-          {{ item.productPrice }}
+        <p id="pprice">
+          {{ item.productPrice | currency }}
         </p>
+
+        <mat-card-actions id="pactions">
+          <button mat-button (click)="addCart(item.productId)">Buy</button>
+          <button mat-button>Wishlist</button>
+        </mat-card-actions>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click) = "addCart(item.productId)">Buy</button>
-        <button mat-button>Wishlist</button>
-      </mat-card-actions>
     </mat-card>
   </div>
 </div>
