@@ -33,20 +33,49 @@ export class ViewOrdersComponent implements OnInit {
     this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
   }
 
+  template: any = {
+    "orderAmount": null,
+    "orderDate": "",
+    "orderDetails": "",
+    "orderId": null,
+    "orderStatus": "",
+    "productDescription": "",
+    "productId": null,
+    "productName": "",
+    "productPrice": null,
+    "userId": ""
+  }
+
   normalizeOrders(test: any[]) {
+    let ret: any[] = [];
     let temp = -1;
     for (let x = 0; x < test.length; x++) {
       if (x > 0) {
         if (test[x].orderId == test[x - 1].orderId || test[x].orderId == temp) {
-          temp = test[x - 1].orderId;
+          if (test[x - 1].orderId != null) {
+            temp = test[x - 1].orderId;
+          }
           test[x].orderId = null;
           test[x].orderDate = "";
           test[x].orderAmount = null;
           test[x].orderStatus = "";
+          ret.push(test[x]);
         }
+        else {
+          if (x > 1) {
+            ret.push(JSON.parse(JSON.stringify(this.template)));
+            ret.push(JSON.parse(JSON.stringify(this.template)));
+            ret.push(JSON.parse(JSON.stringify(this.template)));
+          }
+          ret.push(test[x]);
+        }
+
+      }
+      else {
+        ret.push(test[x]);
       }
     }
-    return test;
+    return ret;
   }
 
 }
