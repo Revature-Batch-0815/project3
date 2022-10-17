@@ -19,7 +19,6 @@ body {
   color: var(--off-white);
 }
 
-/* Banner */
 
 /* header */
 .header {
@@ -28,7 +27,6 @@ body {
 }
 
 /* Retro Highlight */
-
 #retro {
   padding: 2vw;
   background-color: var(--slate);
@@ -60,7 +58,6 @@ body {
 }
 
 /* product cards */
-
 #category {
   justify-content: center;
   padding: 4px;
@@ -122,7 +119,6 @@ body {
   border-radius: 12px;
 }
 
-/* mobile version */
 @media screen and (min-width: 568px) {
   #cat-card {
     max-width: 40vw;
@@ -138,7 +134,8 @@ body {
 
   #mobile-header,
   #mobile-carousel,
-  #mobile-retro {
+  #mobile-retro,
+  #mob-category {
     display: none;
   }
 
@@ -174,6 +171,17 @@ body {
     max-width: 45vw;
   }
 
+  #mob-cat-card{
+    margin-bottom: 10px;
+    border: none;
+  }
+
+  #cat-txt{
+    color: white;
+    font-size: large;
+    margin-bottom: 5px;
+  }
+
   #cat-img-text {
     color: white;
     position: absolute;
@@ -182,11 +190,22 @@ body {
     font-size: 3vw;
   }
 
+  .card-text, .retro-heading{
+    font-size: large;
+  }
+
   #trending,
   #retro,
-  #web-header {
+  #web-header,
+  #category {
     display: none;
   }
+
+  #mob-category {
+    justify-content: center;
+    text-align: center;
+  }
+  
 
   .mob-cards-wrapper {
     display: flex;
@@ -199,7 +218,8 @@ body {
     position: absolute;
     font-size: 2vh;
     bottom: 47vh;
-    left: 10vw;
+    left: 2.5vw;
+    font-size: larger;
     color: #ffff;
   }
   .mob-retro-buttons {

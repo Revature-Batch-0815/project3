@@ -5,16 +5,13 @@
 @media (min-width: 1001px) {
   #search {
     height: 50px;
-    width: 30vw;
+    width: 18vw;
     border: none;
     border-radius: 8px 0 0 8px;
   }
 
   .search-btn {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 15.5px;
-    padding-bottom: 16px;
+    padding: 15.91px;
     border: none;
     border-radius: 0 8px 8px 0;
     margin-right: px;
@@ -32,16 +29,17 @@
   }
 
   .search-btn {
-    width: 3.5vw;
-    height: 5.01vh;
+    padding: 11.51px;
     border: none;
     border-radius: 0 8px 8px 0;
-    margin-right: 2vw;
+    margin-right: px;
+    background-color: #e5e5e5;
+    color: #0c1322;
   }
 }
 @media (max-width: 770px) and (min-width: 577px) {
   #search,
-  .search-btn {
+  .search-btn, svg{
     visibility: hidden;
   }
 }
@@ -55,10 +53,11 @@
   }
 
   .search-btn {
-    width: 5.8vw;
-    height: 5.01vh;
+    padding: 3.25vw;
     border: none;
     border-radius: 0 8px 8px 0;
-    margin-right: 2vw;
+    margin-right: px;
+    background-color: #e5e5e5;
+    color: #0c1322;
   }
 }
