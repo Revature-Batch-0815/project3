@@ -247,12 +247,12 @@ export class PayComponentComponent implements OnInit {
       this.getOrder();
       var items: any = [];
       items[0] = this.subtotal;
-      //items[1] = this.userID.sub;
-      items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
+      items[1] = this.userID.sub;
+      //items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
      
       var theOrder = {
         "orderAmount": items[0],
-        "userId": "666fbab1-d1e0-413f-9e60-808a3b563c86",
+        "userId": items[1],
         "orderDetails": this.getOrder()
       }
       console.log(JSON.stringify(theOrder));
