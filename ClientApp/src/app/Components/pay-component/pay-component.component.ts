@@ -11,6 +11,9 @@ import { map, Observable } from 'rxjs';
 import { first } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../../../order.model';
+//import { MatButtonModule } from '@angular/material/button';
+
+
 
 /*
  * Notes:
@@ -44,7 +47,7 @@ export interface product {
 })
 
 export class PayComponentComponent implements OnInit {
-
+  
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
@@ -58,6 +61,10 @@ export class PayComponentComponent implements OnInit {
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
+  });
+
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: ['', Validators.required],
   });
   constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
