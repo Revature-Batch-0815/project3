@@ -46,6 +46,8 @@ export class ViewOrdersComponent implements OnInit {
     "userId": ""
   }
 
+
+  paddingAmount: number = 4;
   normalizeOrders(test: any[]) {
     let ret: any[] = [];
     let temp = -1;
@@ -63,13 +65,12 @@ export class ViewOrdersComponent implements OnInit {
         }
         else {
           if (x > 1) {
-            ret.push(JSON.parse(JSON.stringify(this.template)));
-            ret.push(JSON.parse(JSON.stringify(this.template)));
-            ret.push(JSON.parse(JSON.stringify(this.template)));
+            for (let i = 0; i < this.paddingAmount; i++) {
+              ret.push(JSON.parse(JSON.stringify(this.template)));
+            }
           }
           ret.push(test[x]);
         }
-
       }
       else {
         ret.push(test[x]);
@@ -77,7 +78,6 @@ export class ViewOrdersComponent implements OnInit {
     }
     return ret;
   }
-
 }
 
 
