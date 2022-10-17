@@ -1,6 +1,6 @@
-<mat-card class="example-card" style="margin:20px ;text-align: center;">
-
+<mat-card class="example-card" style="margin: 20px; text-align: center">
   <div mat-card-avatar class="example-header-image"></div>
+
   <mat-card-title >{{product?.productName}}</mat-card-title>
   <mat-card-subtitle>{{product?.productCategory}}</mat-card-subtitle>
 
@@ -14,4 +14,17 @@
   <button (click) = "addCart(product?.productId)" mat-button>Add To Cart</button>
 </mat-card-actions>
 
+  <img
+    mat-card-xxl-image
+    src="{{ product?.productImgUrl }}"
+    alt="Photo of product"
+  />
+  <mat-card-content>
+    <p>
+      {{ product?.productDescription }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Add To Cart</button>
+  </mat-card-actions>
 </mat-card>
