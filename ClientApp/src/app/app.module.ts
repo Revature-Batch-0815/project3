@@ -74,6 +74,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SearchMessageService } from './services/search-message.service';
 import { PaySuccessComponent } from './components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
+//import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -140,7 +141,7 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-
+    MatButtonModule,
     MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
