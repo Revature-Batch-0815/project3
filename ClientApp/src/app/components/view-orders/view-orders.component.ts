@@ -23,7 +23,8 @@ export class ViewOrdersComponent implements OnInit {
   //}
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
     http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
-      this.orders = result;
+      this.orders = this.normalizeOrders(result);
+      console.log(this.normalizeOrders(result));
     }, error => console.error(error));
   }
 
@@ -31,7 +32,26 @@ export class ViewOrdersComponent implements OnInit {
     this.isAuthenticated = this.authorizeService.isAuthenticated();
     this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
   }
+
+  normalizeOrders(test: any[]) {
+    let temp = -1;
+    for (let x = 0; x < test.length; x++) {
+      if (x > 0) {
+        if (test[x].orderId == test[x - 1].orderId || test[x].orderId == temp) {
+          temp = test[x - 1].orderId;
+          test[x].orderId = null;
+          test[x].orderDate = "";
+          test[x].orderAmount = null;
+          test[x].orderStatus = "";
+        }
+      }
+    }
+    return test;
+  }
+
 }
+
+
 
 interface Order {
   orderAmount: number,
