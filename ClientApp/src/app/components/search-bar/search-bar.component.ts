@@ -2,9 +2,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { AppServiceService } from 'src/app/services/app-services.service';
+import { AppServiceService } from 'src/app/Services/app-services.service';
 import { Product } from 'src/products.model';
-import { SearchMessageService } from 'src/app/services/search-message.service';
+import { SearchMessageService } from 'src/app/Services/search-message.service';
 
 @Component({
   selector: 'app-search-bar',
