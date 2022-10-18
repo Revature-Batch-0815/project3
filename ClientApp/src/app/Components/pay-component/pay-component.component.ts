@@ -183,7 +183,7 @@ export class PayComponentComponent implements OnInit {
 
   clearCart() {
     localStorage.setItem("Cart", JSON.stringify(this.emptyCart));
-    this.router.navigate(['/view-orders']);
+    this.router.navigate(['/']);
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
@@ -241,9 +241,8 @@ export class PayComponentComponent implements OnInit {
 
   confirmCheckout() {
     (async () => {
-      await this.delay(2000);
-    
-      console.log('post request to orders for $', this.subtotal, 'from Hailey');
+      
+      await this.delay(1000);
       this.getOrder();
       var items: any = [];
       items[0] = this.subtotal;
@@ -257,6 +256,7 @@ export class PayComponentComponent implements OnInit {
       }
       console.log(JSON.stringify(theOrder));
       this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
+      alert("Order Confirmed!");
       this.clearCart();
     })();
     /*
