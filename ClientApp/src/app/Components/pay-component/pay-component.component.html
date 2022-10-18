@@ -1,5 +1,7 @@
-
-<mat-card class="example-card" style="margin:20px ;text-align: center;">
+<section class="checkout-head">
+  <p class="text-center">Checkout<p>
+</section>
+<mat-card class="card" style="margin:20px ;text-align: center;">
   <button (click)="showCart()">Refresh Data</button>
   <div style="display: flex; ">
     <div class="cardHolder">
@@ -19,7 +21,7 @@
             <p>
               {{item.productPrice|currency:'USD'}}
             </p>
-            <button (click) = "removeItem(item.productId)">Remove</button>
+            <button (click)="removeItem(item.productId)">Remove</button>
           </mat-card-content>
         </mat-card>
       </div>
@@ -37,7 +39,7 @@
 
 
 
-  <!--<div style="width: 50%; margin: 0px 20px 0px 20px;">
+<!--<div style="width: 50%; margin: 0px 20px 0px 20px;">
       <mat-stepper #stepper>
         <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
           <form [formGroup]="firstFormGroup">
