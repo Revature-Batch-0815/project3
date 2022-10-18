@@ -72,6 +72,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { SearchMessageService } from './services/search-message.service';
 import { PaySuccessComponent } from './components/pay-success/pay-success.component';
+import { Order } from '../order.model';
+import { OrdersService } from './services/orders.service';
+import { AppServiceService } from './services/app-services.service';
 //MatListModule,MatIconModule,
 
 @NgModule({
@@ -79,7 +82,6 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     SearchBarComponent,
     CreateProductComponent,
@@ -211,7 +213,9 @@ import { PaySuccessComponent } from './components/pay-success/pay-success.compon
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
-    SearchMessageService
+    SearchMessageService,
+    OrdersService,
+    AppServiceService
   ],
   bootstrap: [AppComponent],
 })

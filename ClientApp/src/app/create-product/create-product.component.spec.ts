@@ -6,7 +6,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateProductComponent } from './create-product.component';
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
-//import { MatSnackBar } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 describe('CreateProductComponent', () => {
   let component: CreateProductComponent;
@@ -20,7 +21,8 @@ describe('CreateProductComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule,
         FormsModule,
-        //MatSnackBar
+        MatSnackBarModule,
+        TextFieldModule
       ],
       declarations: [ CreateProductComponent ]
     })
