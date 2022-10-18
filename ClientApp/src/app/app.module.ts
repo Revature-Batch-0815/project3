@@ -14,17 +14,17 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { ViewOrdersComponent } from './Components/view-orders/view-orders.component';
 
 import { CreateProductComponent } from './create-product/create-product.component';
 
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductListComponent } from './Components/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 
 //angular materials
 // Material Form Controls
@@ -61,8 +61,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { PayComponentComponent } from './components/pay-component/pay-component.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { PayComponentComponent } from './Components/pay-component/pay-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -71,8 +71,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
-import { SearchMessageService } from './services/search-message.service';
-import { PaySuccessComponent } from './components/pay-success/pay-success.component';
+import { SearchMessageService } from './Services/search-message.service';
+import { PaySuccessComponent } from './Components/pay-success/pay-success.component';
 //MatListModule,MatIconModule,
 //import { MatButtonModule } from '@angular/material/button';
 

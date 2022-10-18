@@ -1,11 +1,9 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Product } from 'src/products.model';
-import { AppServiceService } from '../../services/app-services.service';
-import { SearchMessageService } from 'src/app/services/search-message.service';
-
+import { SearchMessageService } from 'src/app/Services/search-message.service';
 import { HttpClient } from '@angular/common/http';
-
 import { FormArray, FormBuilder, FormControl, FormGroup, FormRecord, SelectMultipleControlValueAccessor } from '@angular/forms';
+import { AppServiceService } from 'src/app/Services/app-services.service';
 
 
 @Component({

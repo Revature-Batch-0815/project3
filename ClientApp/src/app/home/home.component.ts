@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchMessageService } from 'src/app/services/search-message.service';
-import { AppServiceService } from '../services/app-services.service';
+import { SearchMessageService } from 'src/app/Services/search-message.service';
 import { Product } from 'src/products.model';
+import { AppServiceService } from '../Services/app-services.service';
 
 @Component({
   selector: 'app-home',
