@@ -44,7 +44,7 @@ export interface product {
 })
 
 export class PayComponentComponent implements OnInit {
-
+  emptyCart: any = [];
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
@@ -182,8 +182,8 @@ export class PayComponentComponent implements OnInit {
   }
 
   clearCart() {
-    localStorage.clear();
-    this.router.navigate(['/product']);
+    localStorage.setItem("Cart", JSON.stringify(this.emptyCart));
+    this.router.navigate(['/view-orders']);
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
