@@ -163,7 +163,7 @@ import { AppServiceService } from './Services/app-services.service';
         canActivate: [AuthorizeGuard],
       },
       { path: 'contact-us', component: ContactUsComponent },
-      { path: 'pay', component: PayComponentComponent },
+      { path: 'pay', component: PayComponentComponent, canActivate: [AuthorizeGuard], },
       { path: 'pdetails', component: ProductDetailsComponent },
       { path: 'pdetails/:id', component: ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },

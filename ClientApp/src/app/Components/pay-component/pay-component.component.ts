@@ -44,6 +44,8 @@ export interface product {
 })
 
 export class PayComponentComponent implements OnInit {
+  public isAuthenticated?: Observable<boolean>;
+  public userName?: Observable<string | null | undefined>;
 
   cart2: any = [];
   cartNum: any = [];
@@ -69,6 +71,15 @@ export class PayComponentComponent implements OnInit {
   //ON INIT HERE
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authorizeService.isAuthenticated();
+    this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
+    if (this.userName) {
+      console.log("You're authorized");
+
+      console.log(this.userName);
+    } else {
+      console.log("not authorized");
+    }
     //this.addCart(); //for testing
     this.showCart();
 
