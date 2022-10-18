@@ -49,6 +49,7 @@ export class ViewOrdersComponent implements OnInit {
 
   paddingAmount: number = 4;
   normalizeOrders(test: any[]) {
+    test = test.reverse();
     let ret: any[] = [];
     let temp = -1;
     for (let x = 0; x < test.length; x++) {
