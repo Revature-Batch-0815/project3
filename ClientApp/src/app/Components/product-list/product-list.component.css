@@ -1,3 +1,19 @@
+@import url(../../../styles.css);
+
+body {
+  overflow-x: hidden;
+}
+
+.product-head{
+  text-align:center;
+  font-size: 2.5em;
+  padding: 5px;
+  background-color: var(--slate);
+  font-family: 'Kanit', sans-serif;
+  margin-bottom: 10px;
+}
+
+
 .cardHolder {
   display: flex;
   flex-flow: row wrap;
@@ -10,6 +26,12 @@
   height: 690px;
   width: 375px;
   margin: 10px;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow, 0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+}
+
+.prodCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .example-container {
