@@ -48,8 +48,8 @@ export interface product {
 
 export class PayComponentComponent implements OnInit {
   paymentHandler: any = null;
-  // public isAuthenticated?: Observable<boolean>;
-  // public userName?: Observable<string | null | undefined>;
+  public isAuthenticated?: Observable<boolean>;
+  public userName?: Observable<string | null | undefined>;
 
   cart2: any = [];
   cartNum: any = [];
