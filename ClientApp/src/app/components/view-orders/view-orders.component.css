@@ -1,0 +1,12 @@
+table {
+  color: white;
+  background-color: #2b3c4f;
+  
+}
+.thead-dark {
+  background-color: #0c1322;
+}
+h1 {
+  text-align:center;
+  margin-top:25px;
+}

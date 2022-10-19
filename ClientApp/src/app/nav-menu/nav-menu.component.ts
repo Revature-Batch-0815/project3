@@ -9,7 +9,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 export class NavMenuComponent implements OnInit {
   cartNo: number = 0;
   ngOnInit(): void {
-    setInterval(() => { this.getCartNo() }, 1000);
+    setInterval(() => { this.getCartNo() }, 250);
   }
   isExpanded = false;
   searchText: string = '';
