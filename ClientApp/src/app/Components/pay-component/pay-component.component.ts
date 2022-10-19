@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
-import { AppServiceService } from 'src/app/services/app-services.service';
+import { AppServiceService } from 'src/app/Services/app-services.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from 'src/app/Services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -44,6 +44,8 @@ export interface product {
 })
 
 export class PayComponentComponent implements OnInit {
+  public isAuthenticated?: Observable<boolean>;
+  public userName?: Observable<string | null | undefined>;
 
   cart2: any = [];
   cartNum: any = [];
@@ -69,6 +71,15 @@ export class PayComponentComponent implements OnInit {
   //ON INIT HERE
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authorizeService.isAuthenticated();
+    this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
+    if (this.userName) {
+      console.log("You're authorized");
+
+      console.log(this.userName);
+    } else {
+      console.log("not authorized");
+    }
     //this.addCart(); //for testing
     this.showCart();
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from 'src/app/Services/orders.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +13,10 @@ import { HttpClient } from '@angular/common/http';
 export class ViewOrdersComponent implements OnInit {
   public isAuthenticated?: Observable<boolean>;
   public userName?: Observable<string | null | undefined>;
-
+//injecting BASE_API_URL to help with testing
+//if broken, place the full line below into the constructor and
+//change this.baseUrl1 to baseUrl
+  @Inject('BASE_API_URL') private baseUrl1: string = "";
   public orders: Order[] = [];
 
   //_makeApiCall: OrdersService;
@@ -21,8 +24,8 @@ export class ViewOrdersComponent implements OnInit {
   //constructor(private authorizeService: AuthorizeService) {
   //  this._makeApiCall = _apicallREF;
   //}
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private authorizeService: AuthorizeService) {
-    http.get<Order[]>(baseUrl + 'api/Orders', { withCredentials: true }).subscribe(result => {
+  constructor(http: HttpClient, private authorizeService: AuthorizeService) {
+    http.get<Order[]>(this.baseUrl1 + 'api/Orders', { withCredentials: true }).subscribe(result => {
       this.orders = result;
     }, error => console.error(error));
   }
