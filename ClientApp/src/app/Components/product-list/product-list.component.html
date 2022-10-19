@@ -1,20 +1,60 @@
 
-<div class="cardHolder">
-  <div *ngFor="let item of Products">
-    <mat-card
-      class="example-card prodCard"
-      *ngIf="
+
+<div>
+  <mat-drawer-container>
+    <mat-drawer class="example-container" #sidenav mode="side">
+      <br />
+
+      <h4 style="text-align:center">Categories</h4>
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div *ngFor="let category of categories; let i = index" style="margin-left:10px">
+          <input type="checkbox" formArrayName="selectedCategories" [value]="category.value"
+                 (change)="onCheckboxChange($event)" />
+          {{category.name}}
+        </div>
+        <br />
+        <br />
+        <div style="display: flex; flex-direction: row; width: 100%; margin-left:10px">
+          <h4 style="margin-right: 10px;">Price is < </h4>
+          <input type="number" style="width:50%; height:25px" placeholder="$" id="lessThan" />
+        </div>
+
+
+        <div style="display: flex; flex-direction: row; width: 100%; margin-left:10px">
+          <h4 style="margin-right: 10px;">Price is > </h4>
+          <input type="number" style="width:50%; height:25px" placeholder="$" id="greaterThan" />
+        </div>
+
+        <br />
+
+
+        <div style="text-align:center">
+          <button style="padding:10px; width:30%" type="submit">Sort</button>
+        </div>
+      </form>
+    </mat-drawer>
+
+    <mat-drawer-content>
+      <div class="filterButton">
+        <button (click)="sidenav.toggle()">Sort</button>
+      </div>
+
+      <div class="cardHolder">
+        <div *ngFor="let item of filteredProducts">
+          <mat-card class="example-card prodCard"
+                    *ngIf="
         searchTerm === '' ||
-        item.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.productCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
-      "
-    >
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title
-          ><a [routerLink]="['/pdetails', item.productId]">{{
+        item.productName.toLowerCase().includes(searchTerm) ||
+        item.productCategory.toLowerCase().includes(searchTerm) ||
+        item.productDescription.toLowerCase().includes(searchTerm)
+      ">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>
+                <a [routerLink]="['/pdetails', item.productId]">
+                  {{
             item.productName
+
           }}</a></mat-card-title
         >
         <mat-card-subtitle>{{ item.productCategory }}</mat-card-subtitle>
@@ -32,7 +72,7 @@
           {{ item.productDescription }}
         </p>
         <p>
-          {{ item.productPrice }}
+          {{ item.productPrice | currency }}
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -43,3 +83,7 @@
   </div>
 </div>
 
+
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
