@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Directive, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
 import { AppServiceService } from 'src/app/services/app-services.service';
@@ -43,8 +43,9 @@ export interface product {
   ],
 })
 
-export class PayComponentComponent implements OnInit {
 
+export class PayComponentComponent implements OnInit {
+  paymentHandler: any = null;
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
@@ -59,6 +60,7 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
+  
   constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
@@ -71,6 +73,7 @@ export class PayComponentComponent implements OnInit {
   ngOnInit(): void {
     //this.addCart(); //for testing
     this.showCart();
+    this.invokeStripe();
 
 
     this.count = 0;
@@ -79,6 +82,8 @@ export class PayComponentComponent implements OnInit {
       await this.delay(2000);
       console.log(this.userID.sub);
     })();
+   
+  
 
 
 
@@ -183,7 +188,7 @@ export class PayComponentComponent implements OnInit {
 
   clearCart() {
     localStorage.clear();
-    this.router.navigate(['/product']);
+    //this.router.navigate(['/product']);
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
@@ -259,6 +264,13 @@ export class PayComponentComponent implements OnInit {
       this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
       this.clearCart();
     })();
+
+
+    /*James Stripe*/
+
+
+    /*end of Stripe*/
+
     /*
      *[3799.95, '666fbab1-d1e0-413f-9e60-808a3b563c86', Array(6)]
      * 
@@ -316,6 +328,46 @@ export class PayComponentComponent implements OnInit {
   }
 
 
+
+  /*stripe*/
+  makePayment(amount: any) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51Kwb7DKm59JFxKrhqI64VAWI7H4xBB6qLQ2eqAdDKHrFAQQp26vP66WAc6NmYnZTYL0enYwa3bZLuyiROSiNPmVN00QiZC9vLe',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log(stripeToken);
+        alert('Payment Status: Success!');
+      },
+    });
+    paymentHandler.open({
+      name: 'revvTech',
+      description: 'Your Purchase',
+      amount: amount * 100,
+    });
+  }
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51Kwb7DKm59JFxKrhqI64VAWI7H4xBB6qLQ2eqAdDKHrFAQQp26vP66WAc6NmYnZTYL0enYwa3bZLuyiROSiNPmVN00QiZC9vLe',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+          console.log(stripeToken);
+            alert('Payment has been successfull!');
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
 }
+  /*end of stripe*/
+
+
+
 
 
