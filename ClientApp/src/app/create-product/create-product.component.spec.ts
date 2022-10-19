@@ -44,11 +44,15 @@ describe('CreateProductComponent', () => {
     component.createProductForm.controls['imageurl'].setValue(imageurl);
     component.createProductForm.controls['price'].setValue(price);
     component.createProductForm.controls['quantity'].setValue(quantity);
-
+    
   }
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have default props', fakeAsync(() => {
+    
+    expect(component.createProductForm.controls.name.value).toEqual('');
+  }));
   it('form values should have Validators', fakeAsync(() => {
     updateForm("iPad","Electronics","mock description","www.tech.com", 50, 6);
     expect(component.createProductForm.hasValidator).toBeTruthy();
