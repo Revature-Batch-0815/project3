@@ -1,9 +1,8 @@
 import { Component, Directive, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
-import { AppServiceService } from 'src/app/services/app-services.service';
+import { AppServiceService } from 'src/app/Services/app-services.service';
 import { AuthorizeService } from '../../../api-authorization/authorize.service';
-import { OrdersService } from 'src/app/services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -11,6 +10,10 @@ import { map, Observable } from 'rxjs';
 import { first } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../../../order.model';
+import { OrdersService } from 'src/app/Services/orders.service';
+//import { MatButtonModule } from '@angular/material/button';
+
+
 
 /*
  * Notes:
@@ -43,9 +46,9 @@ export interface product {
   ],
 })
 
-
 export class PayComponentComponent implements OnInit {
   paymentHandler: any = null;
+
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
@@ -60,7 +63,7 @@ export class PayComponentComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  
+
   constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
@@ -189,6 +192,7 @@ export class PayComponentComponent implements OnInit {
   clearCart() {
     localStorage.clear();
     //this.router.navigate(['/product']);
+
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
@@ -246,9 +250,8 @@ export class PayComponentComponent implements OnInit {
 
   confirmCheckout() {
     (async () => {
-      await this.delay(2000);
-    
-      console.log('post request to orders for $', this.subtotal, 'from Hailey');
+      
+      await this.delay(1000);
       this.getOrder();
       var items: any = [];
       items[0] = this.subtotal;
@@ -262,6 +265,7 @@ export class PayComponentComponent implements OnInit {
       }
       console.log(JSON.stringify(theOrder));
       this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
+      alert("Order Confirmed!");
       this.clearCart();
     })();
 
