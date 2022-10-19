@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Directive, ElementRef, OnInit, ViewChild, Inject } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Product } from '../../../products.model';
 import { AppServiceService } from 'src/app/Services/app-services.service';
@@ -54,7 +54,7 @@ export class PayComponentComponent implements OnInit {
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
-
+  baseUrl: string = '';
 
   data: any = localStorage.getItem('Cart');
   dataSource = JSON.parse(this.data);
@@ -66,13 +66,14 @@ export class PayComponentComponent implements OnInit {
     secondCtrl: ['', Validators.required],
   });
 
-  constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService) { }
+  constructor(private http: HttpClient, private _formBuilder: FormBuilder, private service: AppServiceService, private route: ActivatedRoute, private router: Router, private orderService: OrdersService, private authorizeService: AuthorizeService, @Inject('BASE_URL') baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
   @ViewChild('paypalRef', { static: true })
   private paypalRef!: ElementRef;
   userID?: any;
   store: string = "";
   count: number = 0;
-
   //ON INIT HERE
 
   ngOnInit(): void {
@@ -277,7 +278,7 @@ export class PayComponentComponent implements OnInit {
         "orderDetails": this.getOrder()
       }
       console.log(JSON.stringify(theOrder));
-      this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
+      this.http.post<Order>(this.baseUrl + 'api/Orders/', theOrder).subscribe(response => console.log(response));
       alert("Order Confirmed!");
       this.clearCart();
     })();
