@@ -7,7 +7,7 @@
   <mat-drawer class="example-container" #sidenav mode="side">
     <br />
 
-    <h4 style="text-align:center">Categories</h4>
+    <h1 style="text-align:center">Categories</h1> <br />
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <div *ngFor="let category of categories; let i = index" style="margin-left:10px">
         <input type="checkbox" formArrayName="selectedCategories" [value]="category.value"
@@ -31,7 +31,7 @@
 
 
       <div style="text-align:center">
-        <button class="sort-btn" type="submit">Sort</button>
+        <button class="sort-btn-1" type="submit">Sort</button>
       </div>
     </form>
   </mat-drawer>

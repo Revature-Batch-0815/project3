@@ -10,17 +10,17 @@ body {
 }
 
 .sort-btn {
-  background-color: var(--yellow);
+  background-color: var(--slate);
   color: white;
   margin-top: 10px;
   margin-right: 10px;
-  border:none;
+  border: none;
   border-radius: 12px;
   padding: 10px;
 }
 
 .prod-btn {
-  background-color: var(--yellow);
+  background-color: var(--slate);
   color: white;
   border: none;
   border-radius: 8px;
@@ -122,4 +122,10 @@ mat-card-header {
   margin-left: 30px;
 }
 #pactions :hover {
+}
+
+.example-container {
+  font-size: 1em;
+  color: white;
+  background-color: var(--gunmetal-blue);
 }
