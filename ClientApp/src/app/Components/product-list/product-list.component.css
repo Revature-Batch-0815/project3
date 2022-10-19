@@ -1,21 +1,61 @@
+@import url(../../../styles.css);
+
+body {
+  overflow-x: hidden;
+  background-color:var(--gunmetal-blue);
+}
+
+.mat-drawer-content{
+    background-color:var(--gunmetal-blue);
+}
+
+.sort-btn {
+  background-color: var(--slate);
+  color: white;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.prod-btn {
+  background-color: var(--slate);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 2.5px;
+}
+
+
+.product-head{
+  text-align:center;
+  font-size: 2.5em;
+  padding: 5px;
+  background-color: var(--slate);
+  font-family: 'Kanit', sans-serif;
+  margin-bottom: 10px;
+}
+
+
 .cardHolder {
   display: flex;
-  flex-flow: row wrap
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .prodCard {
-  width: 300px;
-  margin-left: 10px;
-  margin-right: 10px;
+  height: 690px;
+  width: 375px;
+  margin: 10px;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow, 0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
 
-
-.red {
-  background-color: red;
-}
-
-.blue {
-  background-color: blue;
+.prodCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .example-container {
@@ -30,5 +70,62 @@
     height: max-content;
     width: fit-content;
     margin: 10px;
+}
 
+
+/*Product Name*/
+#pname {
+  font-size: x-large;
+  width: 315px;
+  padding: 5px;
+  text-align: center;
+}
+
+/*Link in product name*/
+mat-card-title a {
+    color: black;
+}
+
+
+/*Product Category*/
+#pcategory {
+  text-align: center;
+}
+
+
+/*Name and Category box*/
+mat-card-header {
+    height: 120px;
+}
+
+
+/*Product Description*/
+#pdescribe {
+  height: 90px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+/*Product Price*/
+#pprice {
+  font-size: x-large;
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: 30px;
+}
+
+
+/*Buy and Wishlist buttons*/
+#pactions {
+  display: inline-block;
+  margin-left: 30px;
+}
+#pactions :hover {
+}
+
+.example-container {
+  font-size: 1em;
+  color: white;
+  background-color: var(--gunmetal-blue);
 }
