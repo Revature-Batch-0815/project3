@@ -1,18 +1,57 @@
-<mat-card class="example-card" style="margin: 20px; text-align: center">
+<!--<mat-card class="example-card" style="margin: 20px; text-align: center;">
   <div mat-card-avatar class="example-header-image"></div>
 
-  <mat-card-title >{{product?.productName}}</mat-card-title>
+  <mat-card-title>{{product?.productName}}</mat-card-title>
   <mat-card-subtitle>{{product?.productCategory}}</mat-card-subtitle>
 
-<img mat-card-xxl-image src={{product?.productImgUrl}} alt="Photo of product">
-<mat-card-content>
-  <p>
-    {{product?.productDescription}}
-  </p>
-</mat-card-content>
-<mat-card-actions>
-  <button (click) = "addCart(product?.productId)" mat-button>Add To Cart</button>
-</mat-card-actions>
+  <img mat-card-xxl-image src={{product?.productImgUrl}} alt="Photo of product">
+  <mat-card-content>
+    <p class="lead">
+      {{product?.productDescription}}
+    </p>
+  </mat-card-content>-->
 
-  
-</mat-card>
+  <div class="container">
+    <mat-card class="product-details" align="center">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>{{product?.productName}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h4>{{product?.productCategory}}</h4>
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <img mat-card-xxl-image src={{product?.productImgUrl}} alt="Photo of product">
+        <p class="lead">
+          {{product?.productDescription}}
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions >
+        <button mat-stroked-button> Add to Cart </button>
+        <button mat-stroked-button> Return </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!--<mat-card-actions>
+    <button (click) = "addCart(product?.productId)" mat-button>Add To Cart</button>
+  </mat-card-actions>
+
+    <img
+      mat-card-xxl-image
+      src="{{ product?.productImgUrl }}"
+      alt="Photo of product"
+    />
+    <mat-card-content>
+      <p>
+        {{ product?.productDescription }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Add To Cart</button>
+    </mat-card-actions>
+  </mat-card>-->
+
