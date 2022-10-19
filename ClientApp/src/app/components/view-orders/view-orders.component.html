@@ -19,7 +19,7 @@
         <td> {{ order.orderId }} </td>
         <td> {{ order.orderDate | date }} </td>
         <td> {{ order.orderAmount | currency }} </td>
-        <td> {{ order.orderStatus }} </td>
+        <td> {{ order.orderStatus | titlecase }} </td>
         <td> {{ order.productName }} </td>
         <td> {{ order.productPrice | currency }} </td>
       </tr>
