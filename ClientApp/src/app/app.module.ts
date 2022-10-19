@@ -76,6 +76,7 @@ import { Order } from '../order.model';
 import { OrdersService } from './Services/orders.service';
 import { AppServiceService } from './Services/app-services.service';
 //MatListModule,MatIconModule,
+//import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,7 @@ import { AppServiceService } from './Services/app-services.service';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-
+    MatButtonModule,
     MatListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
