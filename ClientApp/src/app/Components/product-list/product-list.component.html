@@ -31,14 +31,14 @@
 
 
       <div style="text-align:center">
-        <button style="padding:10px; width:30%" type="submit">Sort</button>
+        <button class="sort-btn" type="submit">Sort</button>
       </div>
     </form>
   </mat-drawer>
 
   <mat-drawer-content>
     <div class="filterButton">
-      <button (click)="sidenav.toggle()">Sort</button>
+      <button class="sort-btn" (click)="sidenav.toggle()">Click to Sort</button>
     </div>
 
     <div class="cardHolder">
@@ -73,8 +73,8 @@
             </p>
 
             <mat-card-actions id="pactions">
-              <button mat-button (click)="addCart(item.productId)">Buy</button>
-              <button mat-button>Wishlist</button>
+              <button class="prod-btn0" mat-button (click)="addCart(item.productId)">Buy</button>
+              <button mat-button [routerLink]="['/pdetails', item.productId]">Details</button>
             </mat-card-actions>
           </mat-card-content>
         </mat-card>

@@ -2,7 +2,31 @@
 
 body {
   overflow-x: hidden;
+  background-color:var(--gunmetal-blue);
 }
+
+.mat-drawer-content{
+    background-color:var(--gunmetal-blue);
+}
+
+.sort-btn {
+  background-color: var(--yellow);
+  color: white;
+  margin-top: 10px;
+  margin-right: 10px;
+  border:none;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.prod-btn {
+  background-color: var(--yellow);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 2.5px;
+}
+
 
 .product-head{
   text-align:center;
@@ -98,5 +122,4 @@ mat-card-header {
   margin-left: 30px;
 }
 #pactions :hover {
-    background-color: gold;
 }
