@@ -47,7 +47,9 @@ export interface product {
 })
 
 export class PayComponentComponent implements OnInit {
-  
+
+  emptyCart: any = [];
+
   cart2: any = [];
   cartNum: any = [];
   cart: string[] = ['11', '41', '42', '124', '126', '51'];
@@ -189,8 +191,8 @@ export class PayComponentComponent implements OnInit {
   }
 
   clearCart() {
-    localStorage.clear();
-    this.router.navigate(['/product']);
+    localStorage.setItem("Cart", JSON.stringify(this.emptyCart));
+    this.router.navigate(['/']);
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob
   }
   product: Product | undefined;
@@ -248,22 +250,22 @@ export class PayComponentComponent implements OnInit {
 
   confirmCheckout() {
     (async () => {
-      await this.delay(2000);
-    
-      console.log('post request to orders for $', this.subtotal, 'from Hailey');
+      
+      await this.delay(1000);
       this.getOrder();
       var items: any = [];
       items[0] = this.subtotal;
-      //items[1] = this.userID.sub;
-      items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
+      items[1] = this.userID.sub;
+      //items[1] = "666fbab1-d1e0-413f-9e60-808a3b563c86";
      
       var theOrder = {
         "orderAmount": items[0],
-        "userId": "666fbab1-d1e0-413f-9e60-808a3b563c86",
+        "userId": items[1],
         "orderDetails": this.getOrder()
       }
       console.log(JSON.stringify(theOrder));
       this.http.post<Order>('https://localhost:7108/api/Orders/', theOrder).subscribe(response => console.log(response));
+      alert("Order Confirmed!");
       this.clearCart();
     })();
     /*
