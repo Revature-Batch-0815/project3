@@ -13,7 +13,10 @@ import { HttpClient } from '@angular/common/http';
 export class ViewOrdersComponent implements OnInit {
   public isAuthenticated?: Observable<boolean>;
   public userName?: Observable<string | null | undefined>;
-
+//injecting BASE_API_URL to help with testing
+//if broken, place the full line below into the constructor and
+//change this.baseUrl1 to baseUrl
+  @Inject('BASE_API_URL') private baseUrl1: string = "";
   public orders: Order[] = [];
 
   //_makeApiCall: OrdersService;

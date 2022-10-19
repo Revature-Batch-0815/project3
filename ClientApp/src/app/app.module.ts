@@ -56,7 +56,7 @@ import { MatRippleModule } from '@angular/material/core';
 // Material Popups & Modals
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -70,9 +70,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-
 import { SearchMessageService } from './Services/search-message.service';
 import { PaySuccessComponent } from './Components/pay-success/pay-success.component';
+import { Order } from '../order.model';
+import { OrdersService } from './Services/orders.service';
+import { AppServiceService } from './Services/app-services.service';
 //MatListModule,MatIconModule,
 //import { MatButtonModule } from '@angular/material/button';
 
@@ -81,7 +83,6 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     SearchBarComponent,
     CreateProductComponent,
@@ -163,7 +164,7 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
         canActivate: [AuthorizeGuard],
       },
       { path: 'contact-us', component: ContactUsComponent },
-      { path: 'pay', component: PayComponentComponent, canActivate: [AuthorizeGuard] },
+      { path: 'pay', component: PayComponentComponent, canActivate: [AuthorizeGuard], },
       { path: 'pdetails', component: ProductDetailsComponent },
       { path: 'pdetails/:id', component: ProductDetailsComponent },
       { path: 'product', component: ProductListComponent },
@@ -213,7 +214,9 @@ import { PaySuccessComponent } from './Components/pay-success/pay-success.compon
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
-    SearchMessageService
+    SearchMessageService,
+    OrdersService,
+    AppServiceService
   ],
   bootstrap: [AppComponent],
 })
