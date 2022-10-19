@@ -202,7 +202,8 @@ export class PayComponentComponent implements OnInit {
   }
 
   clearCart() {
-    localStorage.clear();
+    let emptyCart: any = [];
+    localStorage.setItem("Cart", JSON.stringify(emptyCart));
 
     //document.location.reload();
     //this.router.navigate(['/product']);
