@@ -191,6 +191,8 @@ export class PayComponentComponent implements OnInit {
 
   clearCart() {
     localStorage.clear();
+
+    //document.location.reload();
     //this.router.navigate(['/product']);
 
     //this.router.navigate(['/paySuccess']); <--Not sure which one is correct so left this here as comment if an error occurs from using /product above -jacob

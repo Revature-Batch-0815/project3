@@ -10,8 +10,7 @@
     <h1 style="text-align:center">Categories</h1> <br />
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <div *ngFor="let category of categories; let i = index" style="margin-left:10px">
-        <input type="checkbox" formArrayName="selectedCategories" [value]="category.value"
-               (change)="onCheckboxChange($event)" />
+        <input type="checkbox" formArrayName="selectedCategories" [value]="category.value" (change)="onCheckboxChange($event)" />
         {{category.name}}
       </div>
       <br />
@@ -90,6 +89,5 @@
     </section>
 
 
-    </mat-drawer-content>
-  </mat-drawer-container>
-</div>
+  </mat-drawer-content>
+</mat-drawer-container>
